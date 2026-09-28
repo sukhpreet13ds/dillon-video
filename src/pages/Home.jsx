@@ -1,0 +1,118 @@
+import React, { useState } from 'react';
+import { FaPlay, FaArrowDown } from 'react-icons/fa';
+import { IoClose } from 'react-icons/io5';
+import TextType from '../components/TextType';
+
+const Home = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  const openVideoModal = () => {
+    setIsVideoModalOpen(true);
+  };
+
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+  };
+
+  return (
+    <main>
+      {/* Hero Section */}
+      <section className="hero-section">
+        {/* Background Video Wrapper */}
+        <div className="hero-video-wrapper" aria-hidden="true">
+          <iframe
+            className="hero-video-iframe"
+            src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0"
+            title="Dillon Video Background"
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            loading="eager"
+          />
+          {/* Lightly blackish layer overlay to ensure maximum text visibility */}
+          <div className="hero-overlay"></div>
+        </div>
+
+        {/* Foreground Content */}
+        <div className="hero-container">
+          {/* Main Title Block */}
+          <div className="hero-main">
+            <p className="hero-subtitle animate__animated animate__fadeInUp">
+              VIDEO PRODUCTION, PERFECTED SINCE 1985
+            </p>
+            <h1 className="hero-heading">
+              <span className="line-powerful animate__animated animate__fadeInUp">
+                Powerful
+              </span>
+              <span className="line-visuals animate__animated animate__fadeInUp">
+                <TextType
+                  text={["Visuals.", "Creation.", "Motion."]}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  deletingSpeed={50}
+                  showCursor={true}
+                  cursorCharacter="|"
+                  loop={true}
+                />
+              </span>
+              <span className="line-production animate__animated animate__fadeInUp">
+                Professional production.
+              </span>
+            </h1>
+          </div>
+
+          {/* Bottom Bar: Tags, Scroll Indicator, Play & Contact */}
+          <div className="hero-bottom-bar animate__animated animate__fadeInUp">
+            <div className="hero-tags">
+              <span className="hero-tag">BRANDING VIDEOS</span>
+              <span className="hero-tag">DRONES</span>
+              <span className="hero-tag">SHORT-FORM CONTENT</span>
+            </div>
+
+            <div 
+              className="hero-scroll-indicator" 
+              onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+            >
+              <span>SCROLL TO ENTER</span>
+              <FaArrowDown className="scroll-arrow" aria-hidden="true" />
+            </div>
+
+            <div className="hero-bottom-right">
+              <button
+                className="hero-play-circle"
+                onClick={openVideoModal}
+                aria-label="Play full video reel"
+                title="Watch Full Reel"
+              >
+                <FaPlay className="play-icon" aria-hidden="true" />
+              </button>
+              <a href="#contact" className="hero-contact-link">
+                CONTACT US
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Modal Lightbox when Play Button is clicked */}
+      {isVideoModalOpen && (
+        <div className="video-modal-backdrop" onClick={closeVideoModal}>
+          <div className="video-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="video-modal-close" onClick={closeVideoModal} aria-label="Close video modal">
+              <IoClose />
+            </button>
+            <iframe
+              className="video-modal-iframe"
+              src="https://player.vimeo.com/video/662073747?autoplay=1&title=1&byline=1"
+              title="Full Video Reel"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
+    </main>
+  );
+};
+
+export default Home;
