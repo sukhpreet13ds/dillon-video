@@ -181,7 +181,7 @@
     min-height: 120px;
     max-height: 190px;
     border-radius: 16px;
-    margin-top: 0.5rem;
+    margin-top: 1.5rem;
   }
   .mobile-nav-footer-actions {
     margin-top: 0.75rem;
@@ -205,14 +205,14 @@
     font-size: 85px;
   }
   .hero-heading .line-visuals {
-    font-size: 64px;
+    font-size: 66px;
     margin-left: 7.5rem;
     margin-top: 1rem;
   }
   .hero-heading .line-production {
     font-size: 36px;
     margin-left: 0.2rem;
-    margin-top: 0.05em;
+    margin-top: 0.5em;
   }
   .hero-bottom-bar {
     flex-direction: column-reverse;

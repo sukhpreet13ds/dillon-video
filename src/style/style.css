@@ -301,7 +301,7 @@ button {
 }
 
 .mobile-nav-item {
-  font-family: var(--font-title);
+  font-family: var(--font-description);
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.15;
@@ -483,6 +483,9 @@ button {
   min-height: 100vh;
   min-width: 177.78vh; /* 16:9 Aspect Ratio (100 * 16 / 9) */
   transform: translate3d(-50%, -50%, 0);
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   border: none;
   pointer-events: none;
   will-change: transform;

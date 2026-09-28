@@ -22,10 +22,10 @@ const Home = () => {
         <div className="hero-video-wrapper" aria-hidden="true">
           <iframe
             className="hero-video-iframe"
-            src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0"
+            src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
             title="Dillon Video Background"
             frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
+            allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
             loading="eager"
           />
           {/* Lightly blackish layer overlay to ensure maximum text visibility */}
@@ -45,7 +45,7 @@ const Home = () => {
               </span>
               <span className="line-visuals animate__animated animate__fadeInUp">
                 <TextType
-                  text={["Visuals.", "Creation.", "Motion."]}
+                  text={["Visuals.", "Impact.", "Motion."]}
                   typingSpeed={75}
                   pauseDuration={1500}
                   deletingSpeed={50}

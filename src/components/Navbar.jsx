@@ -128,16 +128,17 @@ const Navbar = () => {
             </a>
           </div>
 
-          {/* Video right after the buttons */}
+          {/* Video right after the buttons - rendered only when menu is open */}
           <div className="mobile-nav-video-container">
-            <iframe
-              className="mobile-nav-video-iframe"
-              src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0"
-              title="Mobile Menu Background Video"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              loading="lazy"
-            />
+            {mobileMenuOpen && (
+              <iframe
+                className="mobile-nav-video-iframe"
+                src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&quality=360p&dnt=1"
+                title="Mobile Menu Background Video"
+                frameBorder="0"
+                allow="autoplay; fullscreen; picture-in-picture"
+              />
+            )}
             <div className="mobile-nav-video-overlay"></div>
           </div>
         </div>
