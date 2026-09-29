@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaPhoneAlt, FaArrowRight } from 'react-icons/fa';
+import { FaPhoneAlt, FaArrowRight, FaPlay } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import logoImg from '../assets/Layer_1.png';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showArrow, setShowArrow] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prev => !prev);
@@ -14,6 +15,18 @@ const Navbar = () => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
+
+  useEffect(() => {
+    let timeoutId;
+    if (mobileMenuOpen) {
+      timeoutId = setTimeout(() => {
+        setShowArrow(true);
+      }, 1500);
+    } else {
+      setShowArrow(false);
+    }
+    return () => clearTimeout(timeoutId);
+  }, [mobileMenuOpen]);
 
   // Prevent background scroll when mobile menu is open
   useEffect(() => {
@@ -97,22 +110,38 @@ const Navbar = () => {
           <ul className="mobile-nav-list">
             <li>
               <a href="#services" className="mobile-nav-item" onClick={closeMobileMenu}>
-                SERVICES
+                <span className="mobile-nav-text"><span className='letter-highlight'>S</span>ERVICES</span>
+                <span className="mobile-nav-icon-wrapper">
+                  <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
+                  <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
+                </span>
               </a>
             </li>
             <li>
               <a href="#work" className="mobile-nav-item" onClick={closeMobileMenu}>
-                OUR WORK
+                <span className="mobile-nav-text"><span className='letter-highlight'>O</span>UR <span className='letter-highlight'>W</span>ORK</span>
+                <span className="mobile-nav-icon-wrapper">
+                  <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
+                  <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
+                </span>
               </a>
             </li>
             <li>
               <a href="#about" className="mobile-nav-item" onClick={closeMobileMenu}>
-                ABOUT
+                <span className="mobile-nav-text"><span className='letter-highlight'>A</span>BOUT</span>
+                <span className="mobile-nav-icon-wrapper">
+                  <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
+                  <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
+                </span>
               </a>
             </li>
             <li>
               <a href="#contact" className="mobile-nav-item" onClick={closeMobileMenu}>
-                CONTACT
+                <span className="mobile-nav-text"><span className='letter-highlight'>C</span>ONTACT</span>
+                <span className="mobile-nav-icon-wrapper">
+                  <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
+                  <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
+                </span>
               </a>
             </li>
           </ul>
@@ -140,6 +169,11 @@ const Navbar = () => {
               />
             )}
             <div className="mobile-nav-video-overlay"></div>
+            <div className="mobile-nav-video-text">
+               <div className="video-line left-line"></div>
+               <span>Let's Shoot</span>
+               <div className="video-line right-line"></div>
+            </div>
           </div>
         </div>
       </div>

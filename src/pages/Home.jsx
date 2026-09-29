@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { FaPlay, FaArrowDown } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import TextType from '../components/TextType';
-
+import thumbnail from "../assets/image.png"
 const Home = () => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const openVideoModal = () => {
     setIsVideoModalOpen(true);
@@ -20,6 +21,21 @@ const Home = () => {
       <section className="hero-section">
         {/* Background Video Wrapper */}
         <div className="hero-video-wrapper" aria-hidden="true">
+          {!isVideoLoaded && (
+            <img
+              src={thumbnail}
+              alt="Video Thumbnail"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 0
+              }}
+            />
+          )}
           <iframe
             className="hero-video-iframe"
             src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
@@ -27,6 +43,8 @@ const Home = () => {
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
             loading="eager"
+            onLoad={() => setIsVideoLoaded(true)}
+            style={{ opacity: isVideoLoaded ? 1 : 0, transition: 'opacity 0.5s ease' }}
           />
           {/* Lightly blackish layer overlay to ensure maximum text visibility */}
           <div className="hero-overlay"></div>
@@ -68,8 +86,8 @@ const Home = () => {
               <span className="hero-tag">SHORT-FORM CONTENT</span>
             </div>
 
-            <div 
-              className="hero-scroll-indicator" 
+            <div
+              className="hero-scroll-indicator"
               onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
             >
               <span>SCROLL TO ENTER</span>
@@ -90,6 +108,29 @@ const Home = () => {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* About Section with Marquee */}
+      <section className="about-section" id="about">
+        <div className="marquee-container">
+          <div className="marquee-content">
+            <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
+            <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
+          </div>
+        </div>
+
+        <div className="about-container">
+          <p className="about-subtitle">MEET DILLON VIDEO</p>
+          <h2 className="about-heading">
+            Are your visuals<br />
+            telling the authentic<br />
+            story you deserve?
+          </h2>
+          <p className="about-paragraph">
+            Dillon Video and Film Productions, Inc. was established in 1985. Since its inception, Dillon Video has specialized in professional video production services and has added additional services as technology evolved. With corporate offices and studios located in Ocala, Florida, Dillon Video continues to produce results-oriented projects across the US. Other projects have taken us to remote corners of the world, including Africa, Tahiti, Central America and the Caribbean.
+          </p>
+          <a href="#about-more" className="about-link">Know More</a>
         </div>
       </section>
 

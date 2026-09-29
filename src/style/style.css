@@ -5,7 +5,6 @@
 body {
   font-family: var(--font-description);
   color: #141414;
-  background-color: #0c0c0c;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -207,6 +206,10 @@ button {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+.letter-highlight {
+  color: var(--primary-color);
+}
+
 /* =========================================================
    FULL-SCREEN MOBILE NAVIGATION PANEL
    ========================================================= */
@@ -308,14 +311,63 @@ button {
   color: #141414;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: left;
 }
 
 .mobile-nav-item:hover {
   color: var(--primary-color);
+}
+
+.mobile-nav-item:hover .mobile-nav-text {
   transform: translateX(8px);
+}
+
+.mobile-nav-text {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-nav-icon-wrapper {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon-play, .nav-icon-arrow {
+  position: absolute;
+  font-size: 1.25rem;
+  transition: all 0.5s ease;
+}
+
+.nav-icon-arrow {
+  transform: rotate(-45deg);
+}
+
+.nav-icon-play.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.nav-icon-play.hide {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.nav-icon-arrow.show {
+  opacity: 1;
+  transform: rotate(-45deg) scale(1);
+}
+
+.nav-icon-arrow.hide {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.5);
 }
 
 .mobile-nav-footer-actions {
@@ -341,7 +393,7 @@ button {
   color: var(--primary-color);
   font-family: var(--font-description);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 16px;
   transition: all 0.25s ease;
 }
 
@@ -355,7 +407,7 @@ button {
   color: #ffffff;
   font-family: var(--font-description);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 16px;
   transition: all 0.25s ease;
 }
 
@@ -396,7 +448,7 @@ button {
   position: relative;
   width: 100%;
   flex: 1;
-  min-height: 130px;
+  /* min-height: 130px; */
   max-height: 220px;
   border-radius: 18px;
   overflow: hidden;
@@ -444,6 +496,31 @@ button {
   z-index: 2;
 }
 
+.mobile-nav-video-text {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ffffff;
+  z-index: 3;
+  width: 100%;
+  justify-content: center;
+  font-family: var(--font-description);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.video-line {
+  height: 2px;
+  background-color: #ffffff;
+  width: 40px;
+}
+
 
 /* =========================================================
    HERO SECTION
@@ -452,9 +529,10 @@ button {
 .hero-section {
   position: relative;
   width: 100%;
-  height: calc(100vh - 75px);
+  /* height: calc(100vh - 75px);
   min-height: 600px;
-  max-height: 960px;
+  max-height: 960px; */
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -534,7 +612,7 @@ button {
 
 .hero-heading {
   font-family: var(--font-title);
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: -0.01em;
   display: flex;
   flex-direction: column;
@@ -575,7 +653,7 @@ button {
   justify-content: space-between;
   gap: 1.5rem;
   width: 100%;
-  padding-top: 2rem;
+  padding-top: 6rem;
 }
 
 /* Tags */
@@ -721,6 +799,103 @@ button {
 }
 
 /* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+.about-section {
+  background-color: #0b0908;
+  color: #ffffff;
+  padding-bottom: 6rem;
+}
+
+/* Marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #0b0908;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 1.25rem 0;
+  display: flex;
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-text {
+  font-family: var(--font-description);
+  font-size: 32px;
+  font-weight: 500;
+  color: #dfdbd5;
+  padding-right: 1.5rem;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* About Container */
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 6rem 2rem 2rem;
+  text-align: center;
+}
+
+.about-subtitle {
+  font-family: var(--font-tagline);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.about-heading {
+  font-family: var(--font-title);
+  font-size: 80px;
+  line-height: 1.05;
+  font-weight: 400;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+}
+
+.about-paragraph {
+  font-family: var(--font-description);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #ffffff;
+  margin-bottom: 3.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.85;
+}
+
+.about-link {
+  font-family: var(--font-description);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid transparent;
+}
+
+.about-link:hover {
+  opacity: 0.8;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+/* =========================================================
    OPTIONAL VIDEO LIGHTBOX MODAL
    ========================================================= */
 
@@ -778,4 +953,112 @@ button {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* =========================================================
+   THANK YOU PAGE
+   ========================================================= */
+
+.thank-you-page {
+  width: 100%;
+  min-height: calc(100vh - 96px); /* subtract header height roughly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b0908;
+  color: #ffffff;
+  padding: 2rem;
+}
+
+.thank-you-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.thank-you-heading {
+  font-family: var(--font-title);
+  font-size: 4rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.thank-you-text {
+  font-family: var(--font-description);
+  font-size: 1.1rem;
+  color: #dfdbd5;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.thank-you-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-family: var(--font-description);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.thank-you-btn:hover {
+  background-color: #870503;
+  transform: translateY(-2px);
+}
+
+/* Animated Checkmark SVG */
+.checkmark {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #4CAF50; /* Green tick */
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #4CAF50;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  margin: 0 auto;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #4CAF50;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 50px rgba(76, 175, 80, 0.1);
+  }
 }
