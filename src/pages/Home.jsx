@@ -134,6 +134,86 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Crafted with Care / What We Shoot Section */}
+      <section className="crafted-section" id="what-we-shoot">
+        <div className="crafted-container">
+          {/* Header */}
+          <div className="crafted-header">
+            <span className="crafted-tagline">WHAT WE SHOOT</span>
+            <h2 className="crafted-title">
+              Crafted <em>with care.</em>
+            </h2>
+            <a href="#contact" className="crafted-discuss-btn">
+              DISCUSS YOUR PROJECT
+            </a>
+          </div>
+
+          {/* Video Grid */}
+          <div className="crafted-grid">
+            {/* Card 1: Square & Larger */}
+            <div className="crafted-card">
+              <div className="crafted-video-box square-box">
+                <iframe
+                  className="crafted-video-iframe"
+                  src="https://player.vimeo.com/video/1031704729?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
+                  title="Corporate Event Production"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  loading="lazy"
+                />
+              </div>
+              <div className="crafted-card-content">
+                <h3 className="crafted-card-title">John Speaking 
+<br />about Gilber</h3>
+                <p className="crafted-card-desc">
+                  PROFESSIONAL SYNCHRONIZED MULTICAM COVERAGE FOR MASSIVE CORPORATE EVENTS, LIVE SPORTS, STAGE PLAYS, AND ENTERTAINMENT BROADCASTS.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2: Vertical / Staggered */}
+            <div className="crafted-card card-staggered">
+              <div className="crafted-video-box portrait-box-tall">
+                <iframe
+                  className="crafted-video-iframe"
+                  src="https://player.vimeo.com/video/1163760683?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
+                  title="Staging, Lighting & Audio"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  loading="lazy"
+                />
+              </div>
+              <div className="crafted-card-content">
+                <h3 className="crafted-card-title">Tino Martinez</h3>
+                <p className="crafted-card-desc">
+                  ULTRA-RELIABLE, REDUNDANT LIVE PRODUCTION AND HIGH-BANDWIDTH STREAMING PIPELINES OPTIMIZED FOR REMOTE AUDIENCES ANYWHERE.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3: Vertical */}
+            <div className="crafted-card">
+              <div className="crafted-video-box portrait-box">
+                <iframe
+                  className="crafted-video-iframe"
+                  src="https://player.vimeo.com/video/1163760789?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
+                  title="Branding Videos"
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+                  loading="lazy"
+                />
+              </div>
+              <div className="crafted-card-content">
+                <h3 className="crafted-card-title">Gabi Powel</h3>
+                <p className="crafted-card-desc">
+                  STORIES WITH A CLEAR POINT OF VIEW- CRAFTED TO MOVE PEOPLE AND STRENGTHEN YOUR BRAND.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Video Modal Lightbox when Play Button is clicked */}
       {isVideoModalOpen && (
         <div className="video-modal-backdrop" onClick={closeVideoModal}>

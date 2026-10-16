@@ -19,6 +19,9 @@
     max-width: 1740px;
   }
 
+  .crafted-container {
+    max-width: 1740px;
+  }
 }
 
 @media (min-width: 1440px) and (max-width: 1799px) {
@@ -35,6 +38,14 @@
     font-size: 76px;
     margin-left: 175px;
     margin-top: 22px;
+  }
+
+  .crafted-title {
+    font-size: 3.8rem;
+  }
+
+  .crafted-card-title {
+    font-size: 2.15rem;
   }
 }
 
@@ -68,6 +79,22 @@
 
   .about-heading {
     font-size: 4rem;
+  }
+
+  .crafted-container {
+    padding: 0 2rem;
+  }
+
+  .crafted-title {
+    font-size: 3.4rem;
+  }
+
+  .crafted-card-title {
+    font-size: 2rem;
+  }
+
+  .crafted-grid {
+    gap: 2rem;
   }
 }
 
@@ -130,6 +157,43 @@
 
   .about-heading {
     font-size: 3.5rem;
+  }
+
+  .crafted-container {
+    padding: 0 1.5rem;
+  }
+
+  .crafted-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .crafted-title {
+    font-size: 2.8rem;
+  }
+
+  .crafted-tagline {
+    font-size: 12px;
+  }
+
+  .crafted-discuss-btn {
+    font-size: 12px;
+    padding: 0.45rem 1rem;
+  }
+
+  .crafted-grid {
+    gap: 1.5rem;
+  }
+
+  .card-staggered {
+    margin-top: 4rem;
+  }
+
+  .crafted-card-title {
+    font-size: 1.75rem;
+  }
+
+  .crafted-card-desc {
+    font-size: 0.75rem;
   }
 }
 
@@ -208,6 +272,52 @@
   .about-paragraph {
     font-size: 0.95rem;
     margin-bottom: 2.5rem;
+  }
+
+  .crafted-section {
+    padding: 4.5rem 0 5.5rem;
+  }
+
+  .crafted-container {
+    padding: 0 1.5rem;
+  }
+
+  .crafted-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .crafted-tagline {
+    order: 0;
+    font-size: 12px;
+  }
+
+  .crafted-title {
+    order: 1;
+    font-size: 2.75rem;
+  }
+
+  .crafted-discuss-btn {
+    order: 2;
+    margin-left: 0;
+  }
+
+  .crafted-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin: 0 auto;
+    gap: 3.5rem;
+  }
+
+  .card-staggered {
+    margin-top: 0;
+  }
+
+  .crafted-card-title {
+    font-size: 2.1rem;
   }
 }
 
@@ -357,5 +467,59 @@
   .about-paragraph {
     font-size: 0.9rem;
     margin-bottom: 2rem;
+  }
+
+  .crafted-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .crafted-container {
+    padding: 0 1rem;
+  }
+
+  .crafted-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .crafted-tagline {
+    order: 0;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .crafted-title {
+    order: 1;
+    font-size: 2.2rem;
+  }
+
+  .crafted-discuss-btn {
+    order: 2;
+    font-size: 13px;
+    padding: 0.45rem 0;
+    margin-left: 0;
+  }
+
+  .crafted-grid {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .card-staggered {
+    margin-top: 0;
+  }
+
+  .crafted-card-title {
+    font-size: 35px;
+    margin-bottom: 0.75rem;
+  }
+
+  .crafted-card-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    max-width: 100%;
   }
 }
