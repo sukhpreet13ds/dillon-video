@@ -1171,6 +1171,7 @@ button {
   height: 100%;
   overflow: hidden;
   user-select: none;
+  touch-action: pan-x;
 }
 
 .threecol-column-track {
