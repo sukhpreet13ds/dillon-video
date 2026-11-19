@@ -44,7 +44,7 @@ const CTA = () => {
         <div className="cta-logos-grid animate-on-scroll" data-animation="animate__fadeInUp">
           {logos.map((logo, index) => (
             <div key={index} className="cta-logo-item">
-              <img src={logo.src} alt={logo.alt} className="cta-logo-img" />
+              <img src={logo.src} alt={logo.alt} className="cta-logo-img" loading="lazy" decoding="async" />
             </div>
           ))}
         </div>

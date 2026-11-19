@@ -10,16 +10,109 @@ import thumbnail from "../assets/image.png";
 import howWorkBg from "../assets/how-work.jpg";
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
+// Optimized Lazy-loading Video Box for Crafted Section
+const CraftedVideoBox = ({ vimeoId, title, thumb, boxClass }) => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+  const containerRef = useRef(null);
+  const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoad(true);
+            if (iframeRef.current && iframeRef.current.contentWindow) {
+              try {
+                iframeRef.current.contentWindow.postMessage(
+                  JSON.stringify({ method: 'play' }),
+                  '*'
+                );
+              } catch {}
+            }
+          } else {
+            if (iframeRef.current && iframeRef.current.contentWindow) {
+              try {
+                iframeRef.current.contentWindow.postMessage(
+                  JSON.stringify({ method: 'pause' }),
+                  '*'
+                );
+              } catch {}
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '250px 0px',
+        threshold: 0.1
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const handleIframeLoad = () => {
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      try {
+        iframeRef.current.contentWindow.postMessage(
+          JSON.stringify({ method: 'addEventListener', value: 'play' }),
+          '*'
+        );
+      } catch {}
+    }
+    // Smooth crossfade after buffer
+    setTimeout(() => {
+      setIsReady(true);
+    }, 1000);
+  };
+
+  return (
+    <div className={`crafted-video-box ${boxClass}`} ref={containerRef}>
+      <img
+        src={thumb}
+        alt={title}
+        className="crafted-video-thumb"
+        loading="lazy"
+        decoding="async"
+        style={{
+          opacity: isReady ? 0 : 1
+        }}
+      />
+      {shouldLoad && (
+        <iframe
+          ref={iframeRef}
+          className="crafted-video-iframe"
+          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1&api=1`}
+          title={title}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+          onLoad={handleIframeLoad}
+        />
+      )}
+    </div>
+  );
+};
+
 const Home = () => {
   useScrollAnimation();
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isFeaturedMounted, setIsFeaturedMounted] = useState(false);
+  const [isFeaturedLoaded, setIsFeaturedLoaded] = useState(false);
   const [isFeaturedPlaying, setIsFeaturedPlaying] = useState(true);
+  const userPausedFeaturedRef = useRef(false);
+
+  const heroSectionRef = useRef(null);
   const featuredSectionRef = useRef(null);
   const featuredIframeRef = useRef(null);
   const heroIframeRef = useRef(null);
 
-  // Listen to Vimeo playback messages so thumbnail only fades when video actually starts
+  // Listen to Vimeo playback messages so hero thumbnail only fades when video actually starts
   useEffect(() => {
     const handleVimeoMessage = (event) => {
       try {
@@ -27,11 +120,40 @@ const Home = () => {
         if (data && (data.event === 'play' || data.event === 'playing' || data.event === 'timeupdate')) {
           setIsVideoLoaded(true);
         }
-      } catch (err) {}
+      } catch {}
     };
 
     window.addEventListener('message', handleVimeoMessage);
     return () => window.removeEventListener('message', handleVimeoMessage);
+  }, []);
+
+  // Pause hero video when scrolled away to conserve CPU, GPU and bandwidth
+  useEffect(() => {
+    if (!heroSectionRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!heroIframeRef.current || !heroIframeRef.current.contentWindow) return;
+          try {
+            if (entry.isIntersecting) {
+              heroIframeRef.current.contentWindow.postMessage(
+                JSON.stringify({ method: 'play' }),
+                '*'
+              );
+            } else {
+              heroIframeRef.current.contentWindow.postMessage(
+                JSON.stringify({ method: 'pause' }),
+                '*'
+              );
+            }
+          } catch {}
+        });
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(heroSectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   const handleHeroIframeLoad = () => {
@@ -45,7 +167,7 @@ const Home = () => {
           JSON.stringify({ method: 'addEventListener', value: 'timeupdate' }),
           '*'
         );
-      } catch (e) {}
+      } catch {}
     }
     // Safety fallback: smooth fade after video has had buffering time
     setTimeout(() => {
@@ -55,31 +177,48 @@ const Home = () => {
 
   const toggleFeaturedVideo = () => {
     if (!featuredIframeRef.current) return;
-    const command = isFeaturedPlaying ? 'pauseVideo' : 'playVideo';
-    featuredIframeRef.current.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: command, args: '' }),
-      '*'
-    );
-    setIsFeaturedPlaying(!isFeaturedPlaying);
+    const nextState = !isFeaturedPlaying;
+    userPausedFeaturedRef.current = !nextState;
+    const command = nextState ? 'playVideo' : 'pauseVideo';
+    try {
+      featuredIframeRef.current.contentWindow.postMessage(
+        JSON.stringify({ event: 'command', func: command, args: '' }),
+        '*'
+      );
+    } catch {}
+    setIsFeaturedPlaying(nextState);
   };
 
+  // Lazy load featured YouTube iframe when approaching, and pause when leaving viewport
   useEffect(() => {
     if (!featuredSectionRef.current) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            setIsFeaturedMounted(true);
+            if (featuredIframeRef.current && !userPausedFeaturedRef.current) {
+              try {
+                featuredIframeRef.current.contentWindow.postMessage(
+                  JSON.stringify({ event: 'command', func: 'playVideo', args: '' }),
+                  '*'
+                );
+                setIsFeaturedPlaying(true);
+              } catch {}
+            }
+          } else {
             if (featuredIframeRef.current) {
-              featuredIframeRef.current.contentWindow.postMessage(
-                JSON.stringify({ event: 'command', func: 'playVideo', args: '' }),
-                '*'
-              );
-              setIsFeaturedPlaying(true);
+              try {
+                featuredIframeRef.current.contentWindow.postMessage(
+                  JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }),
+                  '*'
+                );
+              } catch {}
             }
           }
         });
       },
-      { threshold: 0.25 }
+      { rootMargin: '300px 0px', threshold: 0.15 }
     );
 
     observer.observe(featuredSectionRef.current);
@@ -97,7 +236,7 @@ const Home = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="hero-section">
+      <section className="hero-section" ref={heroSectionRef}>
         {/* Background Video Wrapper */}
         <div className="hero-video-wrapper" aria-hidden="true">
           {/* High-priority Poster Thumbnail - covers iframe until actual playback starts */}
@@ -106,7 +245,7 @@ const Home = () => {
             alt="Dillon Video Reel"
             fetchPriority="high"
             loading="eager"
-            decoding="sync"
+            decoding="async"
             style={{
               position: 'absolute',
               top: 0,
@@ -239,16 +378,12 @@ const Home = () => {
           <div className="crafted-grid">
             {/* Card 1: Square & Larger */}
             <div className="crafted-card animate-on-scroll" data-animation="animate__fadeInUp">
-              <div className="crafted-video-box square-box">
-                <iframe
-                  className="crafted-video-iframe"
-                  src="https://player.vimeo.com/video/1031704729?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
-                  title="Corporate Event Production"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                  loading="lazy"
-                />
-              </div>
+              <CraftedVideoBox
+                vimeoId="1031704729"
+                title="Corporate Event Production"
+                thumb="https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640"
+                boxClass="square-box"
+              />
               <div className="crafted-card-content">
                 <h3 className="crafted-card-title">John Speaking 
 <br />about Gilber</h3>
@@ -260,16 +395,12 @@ const Home = () => {
 
             {/* Card 2: Vertical / Staggered */}
             <div className="crafted-card card-staggered animate-on-scroll" data-animation="animate__fadeInUp">
-              <div className="crafted-video-box portrait-box-tall">
-                <iframe
-                  className="crafted-video-iframe"
-                  src="https://player.vimeo.com/video/1163760683?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
-                  title="Staging, Lighting & Audio"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                  loading="lazy"
-                />
-              </div>
+              <CraftedVideoBox
+                vimeoId="1163760683"
+                title="Staging, Lighting & Audio"
+                thumb="https://i.vimeocdn.com/video/2120113912-0465ce4b5144bf816471d4cd71e229164ae5829aa30f96972e850a2f9299150e-d_640"
+                boxClass="portrait-box-tall"
+              />
               <div className="crafted-card-content">
                 <h3 className="crafted-card-title">Tino Martinez</h3>
                 <p className="crafted-card-desc">
@@ -280,16 +411,12 @@ const Home = () => {
 
             {/* Card 3: Vertical */}
             <div className="crafted-card animate-on-scroll" data-animation="animate__fadeInUp">
-              <div className="crafted-video-box portrait-box">
-                <iframe
-                  className="crafted-video-iframe"
-                  src="https://player.vimeo.com/video/1163760789?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=0&playsinline=1&dnt=1"
-                  title="Branding Videos"
-                  frameBorder="0"
-                  allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
-                  loading="lazy"
-                />
-              </div>
+              <CraftedVideoBox
+                vimeoId="1163760789"
+                title="Branding Videos"
+                thumb="https://i.vimeocdn.com/video/2120113532-f211edbde2a4465d2efbf2b4ab9d3c9e2b948ec11c33a6b59ce859c64b824125-d_640"
+                boxClass="portrait-box"
+              />
               <div className="crafted-card-content">
                 <h3 className="crafted-card-title">Gabi Powel</h3>
                 <p className="crafted-card-desc">
@@ -308,14 +435,31 @@ const Home = () => {
       <section className="featured-video-section" ref={featuredSectionRef} id="featured-video">
         <div className="featured-video-container">
           <div className="featured-video-wrapper animate-on-scroll" data-animation="animate__zoomIn" onClick={toggleFeaturedVideo}>
-            <iframe
-              ref={featuredIframeRef}
-              className="featured-video-iframe"
-              src="https://www.youtube.com/embed/50ngZiCfsxE?enablejsapi=1&autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=50ngZiCfsxE&playsinline=1&modestbranding=1&showinfo=0&iv_load_policy=3"
-              title="Dillon Featured Video"
-              frameBorder="0"
-              allow="autoplay; encrypted-media; picture-in-picture"
+            <img
+              src="https://i.ytimg.com/vi/50ngZiCfsxE/maxresdefault.jpg"
+              alt="Dillon Featured Video"
+              className="featured-video-thumb"
+              loading="lazy"
+              decoding="async"
+              style={{
+                opacity: isFeaturedLoaded ? 0 : 1
+              }}
             />
+            {isFeaturedMounted && (
+              <iframe
+                ref={featuredIframeRef}
+                className="featured-video-iframe"
+                src="https://www.youtube.com/embed/50ngZiCfsxE?enablejsapi=1&autoplay=1&mute=1&controls=0&rel=0&loop=1&playlist=50ngZiCfsxE&playsinline=1&modestbranding=1&showinfo=0&iv_load_policy=3"
+                title="Dillon Featured Video"
+                frameBorder="0"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                onLoad={() => {
+                  setTimeout(() => {
+                    setIsFeaturedLoaded(true);
+                  }, 1000);
+                }}
+              />
+            )}
             {/* Click layer to intercept clicks and toggle play/pause */}
             <div className="featured-video-overlay" />
 

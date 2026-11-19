@@ -21,7 +21,7 @@ const COLUMN_3_VIDEOS = [
   { id: "908830409", title: "Lisa Citrus Q & A", thumb: "https://i.vimeocdn.com/video/1792020080-69b4aae5780835bc027df5db9891d7d273a2b7bd56c3ccb134a40b115d70e7dc-d_640" }
 ];
 
-const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId }) => {
+const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId, isInView }) => {
   const containerRef = useRef(null);
   const trackRef = useRef(null);
   const offsetRef = useRef(0);
@@ -47,7 +47,7 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId 
   }, [direction]);
 
   useEffect(() => {
-    updateHeight();
+    updateHeight(); 
     const t1 = setTimeout(updateHeight, 200);
     const t2 = setTimeout(updateHeight, 600);
     window.addEventListener('resize', updateHeight);
@@ -149,6 +149,8 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId 
   }, []);
 
   useEffect(() => {
+    if (!isInView) return;
+
     let animId;
 
     const tick = () => {
@@ -184,7 +186,7 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId 
 
     animId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(animId);
-  }, [direction, colIndex, hoveredId]);
+  }, [direction, colIndex, hoveredId, isInView]);
 
   return (
     <div
@@ -224,6 +226,7 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId 
                   alt={video.title}
                   className="threecol-card-thumb"
                   loading="lazy"
+                  decoding="async"
                   onLoad={updateHeight}
                 />
               )}
@@ -237,9 +240,31 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId 
 
 const ThreeCol = () => {
   const [hoveredId, setHoveredId] = useState(null);
+  const sectionRef = useRef(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsInView(entry.isIntersecting);
+        });
+      },
+      {
+        rootMargin: '150px 0px',
+        threshold: 0.01
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="threecol-section" id="trusted">
+    <section className="threecol-section" ref={sectionRef} id="trusted">
       <div className="threecol-container">
         {/* Left Editorial Heading and CTA */}
         <div className="threecol-left">
@@ -263,6 +288,7 @@ const ThreeCol = () => {
             colIndex={0}
             hoveredId={hoveredId}
             setHoveredId={setHoveredId}
+            isInView={isInView}
           />
           <ScrollingColumn
             videos={COLUMN_2_VIDEOS}
@@ -270,6 +296,7 @@ const ThreeCol = () => {
             colIndex={1}
             hoveredId={hoveredId}
             setHoveredId={setHoveredId}
+            isInView={isInView}
           />
           <ScrollingColumn
             videos={COLUMN_3_VIDEOS}
@@ -277,6 +304,7 @@ const ThreeCol = () => {
             colIndex={2}
             hoveredId={hoveredId}
             setHoveredId={setHoveredId}
+            isInView={isInView}
           />
         </div>
       </div>
