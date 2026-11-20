@@ -5,15 +5,20 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import heroThumb from '../assets/brand-thumbnail.jpg';
+import heroThumb from '../assets/multi-thumbnail.avif';
 import useBookingModal from '../context/useBookingModal';
+import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
+
+const STORIES_VIDEO_URL = "https://player.vimeo.com/video/727177727?autoplay=1&title=0&byline=0&portrait=0";
+const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1463877409-d704eaa6bef41774cc1c7e2685b4c56f8f73792050be9abbe075c998a53d42a2-d_960";
 
 const MultiCamera = () => {
   useScrollAnimation();
   const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
+  const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
 
   return (
     <main className="service-page-main page-multi-camera">
@@ -91,7 +96,7 @@ const MultiCamera = () => {
             ) : (
               <iframe
                 className="service-video-iframe"
-                src="https://player.vimeo.com/video/662073747?autoplay=1&title=0&byline=0&portrait=0"
+                src="https://player.vimeo.com/video/906858689?autoplay=1&title=0&byline=0&portrait=0"
                 title="Multi-Camera Production Reel"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -111,7 +116,7 @@ const MultiCamera = () => {
       {/* 2. WHY A BRANDING VIDEO (Warm Light / Beige) */}
       <section className="service-why-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             01 / WHY MULTI-CAMERA PRODUCTION
           </span>
 
@@ -187,7 +192,7 @@ const MultiCamera = () => {
                     }}
                   >
                     <img
-                      src="https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640"
+                      src={storiesThumbnail}
                       alt="Multicam Production Sample"
                       className="stories-video-poster-img"
                       loading="lazy"
@@ -207,7 +212,7 @@ const MultiCamera = () => {
                 ) : (
                   <iframe
                     className="stories-video-iframe"
-                    src="https://player.vimeo.com/video/1031704729?autoplay=1&title=0&byline=0&portrait=0"
+                    src="https://player.vimeo.com/video/727177727?autoplay=1&title=0&byline=0&portrait=0"
                     title="Multicam Production Sample"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -260,7 +265,7 @@ const MultiCamera = () => {
       {/* 4. FROM IDEA TO FINAL FILM (Warm Light / Beige) */}
       <section className="service-process-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             03 / FROM IDEA TO FINAL FILM
           </span>
 
@@ -357,7 +362,7 @@ const MultiCamera = () => {
       {/* 6. A FEW THINGS YOU MIGHT ASK (Warm Light / Beige) */}
       <section className="service-faq-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             05 / BEFORE WE BEGIN
           </span>
 

@@ -1562,7 +1562,7 @@
   }
 
   .service-process-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
 
@@ -1572,7 +1572,7 @@
   }
 
   .process-desc {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .service-placement-section {
@@ -1752,5 +1752,8 @@
 
   .booking-success-desc {
     font-size: 14px;
+  }
+  .service-explore-right-col {
+  font-size: 1rem;
   }
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 
 const COLUMN_1_VIDEOS = [
-  { id: "1031704729", title: "John Speaking about Gilber", thumb: "https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640" },
+  { id: "729024737", title: "John Speaking about Gilber", thumb: "https://i.vimeocdn.com/video/1467442577-412bc3d26a60e7e14a1c6f783b8d28ab10e457f07f565149ce83a4974747113a-d_640" },
   { id: "1163760843", title: "Justin Gill", thumb: "https://i.vimeocdn.com/video/2120114334-267bfa11cbd5719f9d76520a1df8e0fabde8d44d1a03df1c8704f6fe386a4a78-d_640" },
   { id: "1163760752", title: "Christina Kim", thumb: "https://i.vimeocdn.com/video/2120114083-ac19f0599337b803ec6220bad772db48d376c54ded6b46e6c37a47fed7e391df-d_640" },
   { id: "1163760719", title: "Cass Meyer", thumb: "https://i.vimeocdn.com/video/2120100033-81309ebf37e3aa430a46b139e456bd6fe64f00fde890817fe2be5dadc93826eb-d_640" }
@@ -47,7 +47,7 @@ const ScrollingColumn = ({ videos, direction, colIndex, hoveredId, setHoveredId,
   }, [direction]);
 
   useEffect(() => {
-    updateHeight(); 
+    updateHeight();
     const t1 = setTimeout(updateHeight, 200);
     const t2 = setTimeout(updateHeight, 600);
     window.addEventListener('resize', updateHeight);

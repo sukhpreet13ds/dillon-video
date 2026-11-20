@@ -110,7 +110,7 @@ const CraftedVideoBox = ({ vimeoId, title, thumb, boxClass }) => {
                   JSON.stringify({ method: 'play' }),
                   '*'
                 );
-              } catch {}
+              } catch { }
             }
           } else {
             if (iframeRef.current && iframeRef.current.contentWindow) {
@@ -119,7 +119,7 @@ const CraftedVideoBox = ({ vimeoId, title, thumb, boxClass }) => {
                   JSON.stringify({ method: 'pause' }),
                   '*'
                 );
-              } catch {}
+              } catch { }
             }
           }
         });
@@ -141,7 +141,7 @@ const CraftedVideoBox = ({ vimeoId, title, thumb, boxClass }) => {
           JSON.stringify({ method: 'addEventListener', value: 'play' }),
           '*'
         );
-      } catch {}
+      } catch { }
     }
     // Smooth crossfade after buffer
     setTimeout(() => {
@@ -221,7 +221,7 @@ const Home = () => {
         if (data && (data.event === 'play' || data.event === 'playing' || data.event === 'timeupdate')) {
           setIsVideoLoaded(true);
         }
-      } catch {}
+      } catch { }
     };
 
     window.addEventListener('message', handleVimeoMessage);
@@ -247,7 +247,7 @@ const Home = () => {
                 '*'
               );
             }
-          } catch {}
+          } catch { }
         });
       },
       { threshold: 0.05 }
@@ -268,7 +268,7 @@ const Home = () => {
           JSON.stringify({ method: 'addEventListener', value: 'timeupdate' }),
           '*'
         );
-      } catch {}
+      } catch { }
     }
     // Safety fallback: smooth fade after video has had buffering time
     setTimeout(() => {
@@ -286,7 +286,7 @@ const Home = () => {
         JSON.stringify({ event: 'command', func: command, args: '' }),
         '*'
       );
-    } catch {}
+    } catch { }
     setIsFeaturedPlaying(nextState);
   };
 
@@ -305,7 +305,7 @@ const Home = () => {
                   '*'
                 );
                 setIsFeaturedPlaying(true);
-              } catch {}
+              } catch { }
             }
           } else {
             if (featuredIframeRef.current) {
@@ -314,7 +314,7 @@ const Home = () => {
                   JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }),
                   '*'
                 );
-              } catch {}
+              } catch { }
             }
           }
         });
@@ -546,14 +546,14 @@ const Home = () => {
             {/* Card 1: Square & Larger */}
             <div className="crafted-card animate-on-scroll" data-animation="animate__fadeInUp">
               <CraftedVideoBox
-                vimeoId="1031704729"
+                vimeoId="729024737"
                 title="Corporate Event Production"
-                thumb="https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640"
+                thumb="https://i.vimeocdn.com/video/1467442577-412bc3d26a60e7e14a1c6f783b8d28ab10e457f07f565149ce83a4974747113a-d_640"
                 boxClass="square-box"
               />
               <div className="crafted-card-content">
-                <h3 className="crafted-card-title">John Speaking 
-<br />about Gilber</h3>
+                <h3 className="crafted-card-title">John Speaking
+                  <br />about Gilber</h3>
                 <p className="crafted-card-desc">
                   PROFESSIONAL SYNCHRONIZED MULTICAM COVERAGE FOR MASSIVE CORPORATE EVENTS, LIVE SPORTS, STAGE PLAYS, AND ENTERTAINMENT BROADCASTS.
                 </p>

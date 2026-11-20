@@ -5,15 +5,20 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import heroThumb from '../assets/brand-thumbnail.jpg';
+import heroThumb from '../assets/real-thumbnail.png';
 import useBookingModal from '../context/useBookingModal';
+import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
+
+const STORIES_VIDEO_URL = "https://player.vimeo.com/video/745394507?autoplay=1&title=0&byline=0&portrait=0";
+const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1499243706-c25b9219ada4f68d77fa84c2b4f90b21e5a644bef4667f59867ee1c171f367c1-d_960";
 
 const RealEstate = () => {
   useScrollAnimation();
   const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
+  const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
 
   return (
     <main className="service-page-main page-real-estate">
@@ -91,7 +96,7 @@ const RealEstate = () => {
             ) : (
               <iframe
                 className="service-video-iframe"
-                src="https://player.vimeo.com/video/662073747?autoplay=1&title=0&byline=0&portrait=0"
+                src="https://player.vimeo.com/video/799975147?autoplay=1&title=0&byline=0&portrait=0"
                 title="Real Estate Photography Reel"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -111,7 +116,7 @@ const RealEstate = () => {
       {/* 2. WHY A BRANDING VIDEO (Warm Light / Beige) */}
       <section className="service-why-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             01 / WHY ARCHITECTURAL REAL ESTATE MEDIA
           </span>
 
@@ -187,7 +192,7 @@ const RealEstate = () => {
                     }}
                   >
                     <img
-                      src="https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640"
+                      src={storiesThumbnail}
                       alt="Real Estate Photography Sample"
                       className="stories-video-poster-img"
                       loading="lazy"
@@ -207,7 +212,7 @@ const RealEstate = () => {
                 ) : (
                   <iframe
                     className="stories-video-iframe"
-                    src="https://player.vimeo.com/video/1031704729?autoplay=1&title=0&byline=0&portrait=0"
+                    src="https://player.vimeo.com/video/745394507?autoplay=1&title=0&byline=0&portrait=0"
                     title="Real Estate Photography Sample"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -260,7 +265,7 @@ const RealEstate = () => {
       {/* 4. FROM IDEA TO FINAL FILM (Warm Light / Beige) */}
       <section className="service-process-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             03 / FROM IDEA TO FINAL FILM
           </span>
 
@@ -357,7 +362,7 @@ const RealEstate = () => {
       {/* 6. A FEW THINGS YOU MIGHT ASK (Warm Light / Beige) */}
       <section className="service-faq-section">
         <div className="service-container">
-          <span className="service-section-tag animate-on-scroll" data-animation="animate__fadeIn">
+          <span className="service-section-tag red-tag animate-on-scroll" data-animation="animate__fadeIn">
             05 / BEFORE WE BEGIN
           </span>
 

@@ -5,15 +5,20 @@ import { FiArrowUpRight } from 'react-icons/fi';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import heroThumb from '../assets/brand-thumbnail.jpg';
+import heroThumb from '../assets/thump.webp';
 import useBookingModal from '../context/useBookingModal';
+import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
+
+const STORIES_VIDEO_URL = "https://player.vimeo.com/video/761200924?autoplay=1&title=0&byline=0&portrait=0";
+const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1528860294-443b7dd3d8bd33178e6f276737121ddf177c232b343e5df1e04b15d704cb44f4-d_960";
 
 const Branding = () => {
   useScrollAnimation();
   const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
+  const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
 
   return (
     <main className="service-page-main">
@@ -91,7 +96,7 @@ const Branding = () => {
             ) : (
               <iframe
                 className="service-video-iframe"
-                src="https://player.vimeo.com/video/662073747?autoplay=1&title=0&byline=0&portrait=0"
+                src="https://www.youtube.com/embed/4BMdLgS6e2Q?autoplay=1&title=0&byline=0&portrait=0"
                 title="Branding Videos Reel"
                 frameBorder="0"
                 allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
@@ -187,7 +192,7 @@ const Branding = () => {
                     }}
                   >
                     <img
-                      src="https://i.vimeocdn.com/video/1952494551-393fef1df4cc325f004fb87ec7ae6317143be18ec706604f33879051c37289d6-d_640"
+                      src={storiesThumbnail}
                       alt="John Speaking about Gilber"
                       className="stories-video-poster-img"
                       loading="lazy"
@@ -207,7 +212,7 @@ const Branding = () => {
                 ) : (
                   <iframe
                     className="stories-video-iframe"
-                    src="https://player.vimeo.com/video/1031704729?autoplay=1&title=0&byline=0&portrait=0"
+                    src={STORIES_VIDEO_URL}
                     title="John Speaking about Gilber"
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
