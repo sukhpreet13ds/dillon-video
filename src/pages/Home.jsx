@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { FaPlay, FaPause, FaArrowDown } from 'react-icons/fa';
+import { FiArrowUpRight } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
 import TextType from '../components/TextType';
 import ThreeCol from '../components/ThreeCol';
@@ -8,7 +10,83 @@ import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import thumbnail from "../assets/image.png";
 import howWorkBg from "../assets/how-work.jpg";
+import vserv1 from '../assets/vserv1.jpg';
+import vserv2 from '../assets/vserv2.jpg';
+import vserv3 from '../assets/vserv3.jpg';
+import vserv4 from '../assets/vserv4.jpg';
+import vserv5 from '../assets/vserv5.jpg';
+import vserv6 from '../assets/vserv6.jpg';
+import vserv7 from '../assets/vserv7.jpg';
+import vserv8 from '../assets/vserv8.jpg';
+import vserv9 from '../assets/vserv9.jpg';
 import useScrollAnimation from '../hooks/useScrollAnimation';
+
+// 9 Services Data for the 3x3 Home Showcase
+const HOME_SERVICES = [
+  {
+    num: '01',
+    title: 'Branding Videos',
+    desc: 'Stories with a clear point of view crafted to move people and build lasting brand authority.',
+    image: vserv1,
+    link: '/branding'
+  },
+  {
+    num: '02',
+    title: 'Drone & Aerial',
+    desc: 'Breathtaking 4K cinematography and FAA-certified piloting delivering cinematic vantage points.',
+    image: vserv2,
+    link: '/drone'
+  },
+  {
+    num: '03',
+    title: 'Short-Form Content',
+    desc: 'High-energy, thumb-stopping vertical reels engineered for maximum algorithmic reach.',
+    image: vserv3,
+    link: '/short-form'
+  },
+  {
+    num: '04',
+    title: 'Multi-Camera Production',
+    desc: 'Synchronized live vision switching and multi-angle recording for large events and concerts.',
+    image: vserv4,
+    link: '/multi-camera'
+  },
+  {
+    num: '05',
+    title: 'Live Streaming',
+    desc: 'Ultra-reliable broadcast streaming pipelines with redundant cellular uplinks and custom graphics.',
+    image: vserv5,
+    link: '/live-streaming'
+  },
+  {
+    num: '06',
+    title: 'Staging, Lighting, Audio',
+    desc: 'Concert-grade sound reinforcement, intelligent lighting design, and modular staging.',
+    image: vserv6,
+    link: '/staging-lighting-audio'
+  },
+  {
+    num: '07',
+    title: 'Corporate Event Production',
+    desc: 'Seamless media coverage, executive keynote recording, and same-day highlight recaps.',
+    image: vserv7,
+    link: '/corporate-event'
+  },
+  {
+    num: '08',
+    title: 'Product Photography',
+    desc: 'Crisp commercial product photography with precision studio lighting and macro detail.',
+    image: vserv8,
+    link: '/product-photography'
+  },
+  {
+    num: '09',
+    title: 'Real Estate Photography',
+    desc: 'HDR architectural imaging, twilight captures, and immersive virtual walkthroughs.',
+    image: vserv9,
+    link: '/real-estate'
+  }
+];
 
 // Optimized Lazy-loading Video Box for Crafted Section
 const CraftedVideoBox = ({ vimeoId, title, thumb, boxClass }) => {
@@ -111,6 +189,29 @@ const Home = () => {
   const featuredSectionRef = useRef(null);
   const featuredIframeRef = useRef(null);
   const heroIframeRef = useRef(null);
+
+  // Floating capsule cursor state for 3x3 services showcase
+  const [hoveredService, setHoveredService] = useState(null);
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [isCursorVisible, setIsCursorVisible] = useState(false);
+  const [isTouchDevice] = useState(
+    () => typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0)
+  );
+
+  const handleServicesMouseMove = (e) => {
+    if (isTouchDevice) return;
+    setCursorPos({ x: e.clientX, y: e.clientY });
+  };
+
+  const handleServicesMouseEnter = () => {
+    if (isTouchDevice) return;
+    setIsCursorVisible(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    setIsCursorVisible(false);
+    setHoveredService(null);
+  };
 
   // Listen to Vimeo playback messages so hero thumbnail only fades when video actually starts
   useEffect(() => {
@@ -337,14 +438,80 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section with Marquee */}
-      <section className="about-section" id="about">
-        <div className="marquee-container animate-on-scroll" data-animation="animate__fadeInUp">
-          <div className="marquee-content">
-            <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
-            <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
+      {/* Marquee Line */}
+      <div className="marquee-container animate-on-scroll" data-animation="animate__fadeInUp">
+        <div className="marquee-content">
+          <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
+          <span className="marquee-text">Multi-Camera Production &bull; Livestreaming &bull; Staging, Lighting, Audio &bull; Corporate Event Production &bull; Product Photography &bull; </span>
+        </div>
+      </div>
+
+      {/* Services Showcase Section (3x3 Boxes, No Gap) */}
+      <section
+        className="services-showcase-section"
+        id="services"
+        onMouseMove={handleServicesMouseMove}
+        onMouseEnter={handleServicesMouseEnter}
+        onMouseLeave={handleServicesMouseLeave}
+      >
+        {/* Floating Capsule Cursor (Hidden on touch devices) */}
+        {!isTouchDevice && isCursorVisible && hoveredService && (
+          <div
+            className="services-floating-cursor visible"
+            style={{
+              left: `${cursorPos.x}px`,
+              top: `${cursorPos.y}px`
+            }}
+            aria-hidden="true"
+          >
+            <span className="cursor-text">Explore {hoveredService}</span>
+          </div>
+        )}
+
+        <div className="services-showcase-container">
+          <div className="services-showcase-grid">
+            {HOME_SERVICES.map((service) => (
+              <Link
+                key={service.num}
+                to={service.link}
+                className="service-showcase-box animate-on-scroll"
+                data-animation="animate__fadeIn"
+                onMouseEnter={() => setHoveredService(service.title)}
+              >
+                {/* Background Image and Overlays */}
+                <div className="service-box-bg-wrap">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="service-box-bg-img"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="service-box-overlay" />
+                </div>
+
+                {/* Top Corner Number */}
+                <span className="service-box-num">{service.num}</span>
+
+                {/* Top Right Corner Tilted Play Button converting to Tilted Arrow on hover */}
+                <div className="service-box-icon-corner" aria-hidden="true">
+                  <FaPlay className="service-box-icon service-box-icon-play" />
+                  <FiArrowUpRight className="service-box-icon service-box-icon-arrow" />
+                </div>
+
+                {/* Bottom Content: Title and description */}
+                <div className="service-box-content">
+                  <h3 className="service-box-title">{service.title}</h3>
+                  <p className="service-box-desc">{service.desc}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
+      </section>
+
+      {/* About Section */}
+      <section className="about-section" id="about">
 
         <div className="about-container">
           <p className="about-subtitle animate-on-scroll" data-animation="animate__fadeInUp">MEET DILLON VIDEO</p>

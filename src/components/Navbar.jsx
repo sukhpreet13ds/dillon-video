@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { FaPhoneAlt, FaArrowRight, FaPlay, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 import logoImg from '../assets/Layer_1.png';
@@ -18,7 +18,7 @@ const SERVICES_DATA = [
   {
     id: 'branding-videos',
     title: 'Branding Videos',
-    link: '#what-we-shoot',
+    link: '/branding',
     description: 'Stories with a clear point of view—crafted to move people, build lasting emotional resonance, and strengthen your brand authority.',
     tags: ['Brand Films', 'Commercials', 'Documentary', 'Storytelling'],
     image: howWorkBg1
@@ -26,7 +26,7 @@ const SERVICES_DATA = [
   {
     id: 'drone-aerial',
     title: 'Drone & Aerial',
-    link: '#what-we-shoot',
+    link: '/drone',
     description: 'Breathtaking 4K aerial cinematography and FAA-certified piloting delivering cinematic vantage points and sweeping perspectives from above.',
     tags: ['FAA Certified', '4K Cinema', 'FPV Flythroughs', 'Site Mapping'],
     image: howWorkBg2
@@ -34,7 +34,7 @@ const SERVICES_DATA = [
   {
     id: 'short-form-content',
     title: 'Short-Form Content',
-    link: '#what-we-shoot',
+    link: '/short-form',
     description: 'High-energy, thumb-stopping reels, shorts, and vertical storytelling engineered for maximum engagement and algorithmic reach.',
     tags: ['TikTok & Reels', 'YouTube Shorts', 'Dynamic Motion', 'Viral Hooks'],
     image: howWorkBg3
@@ -42,7 +42,7 @@ const SERVICES_DATA = [
   {
     id: 'multi-camera-production',
     title: 'Multi-Camera Production',
-    link: '#what-we-shoot',
+    link: '/multi-camera',
     description: 'Synchronized multicam live switching and recording for massive events, live entertainment, concerts, and studio broadcasts.',
     tags: ['Live Switching', 'Broadcast Rig', 'Multi-Angle', 'Concerts & Sports'],
     image: howWorkBg4
@@ -50,7 +50,7 @@ const SERVICES_DATA = [
   {
     id: 'live-streaming',
     title: 'Live Streaming',
-    link: '#what-we-shoot',
+    link: '/live-streaming',
     description: 'Ultra-reliable, low-latency broadcast streaming pipelines and redundant uplinks optimized for remote audiences anywhere.',
     tags: ['Redundant Uplink', 'Custom Graphics', 'Global CDN', 'Interactive Q&A'],
     image: howWorkBg5
@@ -58,7 +58,7 @@ const SERVICES_DATA = [
   {
     id: 'staging-lighting-audio',
     title: 'Staging, Lighting, Audio',
-    link: '#what-we-shoot',
+    link: '/staging-lighting-audio',
     description: 'Concert-grade sound reinforcement, intelligent stage lighting design, and modular staging that turn any space into an immersive experience.',
     tags: ['Concert Audio', 'Pro Lighting', 'LED Stage Displays', 'Wireless Mics'],
     image: howWorkBg6
@@ -66,7 +66,7 @@ const SERVICES_DATA = [
   {
     id: 'corporate-event-production',
     title: 'Corporate Event Production',
-    link: '#what-we-shoot',
+    link: '/corporate-event',
     description: 'Seamless media coverage, executive keynote recording, and live presentation visuals for conferences, summits, and annual meetings.',
     tags: ['Keynote Capture', 'Trade Shows', 'Executive Interviews', 'Same-Day Edits'],
     image: howWorkBg7
@@ -74,7 +74,7 @@ const SERVICES_DATA = [
   {
     id: 'product-photography',
     title: 'Product Photography',
-    link: '#what-we-shoot',
+    link: '/product-photography',
     description: 'Crisp, high-definition commercial product photography with precision studio lighting that makes every material detail stand out.',
     tags: ['Studio Lighting', 'E-Commerce HDR', '360 Spin Views', 'Macro Detail'],
     image: howWorkBg8
@@ -82,12 +82,21 @@ const SERVICES_DATA = [
   {
     id: 'real-estate-photography',
     title: 'Real Estate Photography',
-    link: '#what-we-shoot',
+    link: '/real-estate',
     description: 'HDR architectural photography, cinematic twilight imaging, and immersive virtual walkthroughs that elevate luxury property listings.',
     tags: ['Architectural HDR', 'Twilight Shots', 'Virtual Tours', 'Aerial Scenics'],
     image: howWorkBg9
   }
 ];
+
+// Helper to check if a service matches the current URL pathname
+const isServiceActive = (service, currentPath) => {
+  if (!currentPath || currentPath === '/') return false;
+  const path = currentPath.toLowerCase().replace(/\/$/, '');
+  const link = service.link.toLowerCase().replace(/\/$/, '');
+  const idPath = `/${service.id.toLowerCase()}`;
+  return path === link || path === idPath;
+};
 
 // Unified Mega Menu Component
 const MegaMenuDropdown = ({
@@ -96,7 +105,8 @@ const MegaMenuDropdown = ({
   activeServiceIndex,
   setActiveServiceIndex,
   activeService,
-  handleServiceClick
+  handleServiceClick,
+  currentPathname
 }) => (
   <div
     id="services-mega-menu"
@@ -116,21 +126,26 @@ const MegaMenuDropdown = ({
       {/* Column 1: Services List (Left) */}
       <div className="mega-col-left">
         <span className="mega-section-label">SERVICES</span>
-        <ul className="mega-services-list">
+        <ul
+          className="mega-services-list"
+          onMouseLeave={() => setActiveServiceIndex(null)}
+        >
           {SERVICES_DATA.map((service, idx) => {
-            const isActive = idx === activeServiceIndex;
+            const isHovered = idx === activeServiceIndex;
+            const isCurrent = isServiceActive(service, currentPathname);
+            const isActive = isHovered || isCurrent;
             return (
               <li key={service.id}>
-                <a
-                  href={service.link}
-                  className={`mega-service-link ${isActive ? 'active' : ''}`}
+                <Link
+                  to={service.link}
+                  className={`mega-service-link ${isActive ? 'active' : ''} ${isCurrent ? 'current-page' : ''}`}
                   onMouseEnter={() => setActiveServiceIndex(idx)}
                   onFocus={() => setActiveServiceIndex(idx)}
                   onClick={handleServiceClick}
                 >
                   <span className="mega-link-text">{service.title}</span>
                   {isActive && <span className="mega-active-dot" aria-hidden="true" />}
-                </a>
+                </Link>
               </li>
             );
           })}
@@ -140,14 +155,14 @@ const MegaMenuDropdown = ({
       {/* Column 2: Service Details & Tags (Middle) */}
       <div className="mega-col-middle" key={`detail-${activeService.id}`}>
         <span className="mega-section-label">EXPLORE</span>
-        <a
-          href={activeService.link}
+        <Link
+          to={activeService.link}
           className="mega-detail-title-link"
           onClick={handleServiceClick}
         >
           <span className="mega-detail-title">{activeService.title}</span>
           <FaArrowRight className="mega-detail-arrow" aria-hidden="true" />
-        </a>
+        </Link>
         <p className="mega-detail-desc">{activeService.description}</p>
 
         <div className="mega-pills-grid">
@@ -176,12 +191,20 @@ const MegaMenuDropdown = ({
 );
 
 const Navbar = () => {
+  const location = useLocation();
+  const currentServiceIndex = SERVICES_DATA.findIndex(s => isServiceActive(s, location.pathname));
+  const isServicesPage = currentServiceIndex !== -1;
+
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
   const [megaMenuLocation, setMegaMenuLocation] = useState(null); // 'top' | 'bottom' | null
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
+  const [hoveredServiceIndex, setHoveredServiceIndex] = useState(null);
+  const activeServiceIndex = hoveredServiceIndex !== null
+    ? hoveredServiceIndex
+    : (currentServiceIndex !== -1 ? currentServiceIndex : 0);
   const [pointerLeft, setPointerLeft] = useState(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const isMobileServicesExpanded = mobileServicesOpen || isServicesPage;
   const [isScrolled, setIsScrolled] = useState(false);
 
   const topServicesBtnRef = useRef(null);
@@ -222,16 +245,20 @@ const Navbar = () => {
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setShowArrow(false);
-    setMobileServicesOpen(false);
+    if (!isServicesPage) {
+      setMobileServicesOpen(false);
+    }
   };
 
   const toggleTopMegaMenu = (e) => {
     e.stopPropagation();
+    setHoveredServiceIndex(null);
     setMegaMenuLocation(prev => prev === 'top' ? null : 'top');
   };
 
   const toggleBottomMegaMenu = (e) => {
     e.stopPropagation();
+    setHoveredServiceIndex(null);
     setMegaMenuLocation(prev => prev === 'bottom' ? null : 'bottom');
   };
 
@@ -271,14 +298,11 @@ const Navbar = () => {
   // Close mega menu on outside click or Escape key
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        megaMenuRef.current &&
-        !megaMenuRef.current.contains(event.target) &&
-        topServicesBtnRef.current &&
-        !topServicesBtnRef.current.contains(event.target) &&
-        bottomServicesBtnRef.current &&
-        !bottomServicesBtnRef.current.contains(event.target)
-      ) {
+      const isInsideMega = megaMenuRef.current && megaMenuRef.current.contains(event.target);
+      const isOnTopBtn = topServicesBtnRef.current && topServicesBtnRef.current.contains(event.target);
+      const isOnBottomBtn = bottomServicesBtnRef.current && bottomServicesBtnRef.current.contains(event.target);
+
+      if (!isInsideMega && !isOnTopBtn && !isOnBottomBtn) {
         setMegaMenuLocation(null);
       }
     };
@@ -291,11 +315,13 @@ const Navbar = () => {
 
     if (megaMenuLocation) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
       document.addEventListener('keydown', handleKeyDown);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [megaMenuLocation]);
@@ -339,7 +365,7 @@ const Navbar = () => {
               <button
                 ref={topServicesBtnRef}
                 type="button"
-                className={`navbar-link navbar-services-btn ${megaMenuLocation === 'top' ? 'active' : ''}`}
+                className={`navbar-link navbar-services-btn ${isServicesPage || megaMenuLocation === 'top' ? 'active' : ''}`}
                 onClick={toggleTopMegaMenu}
                 aria-expanded={megaMenuLocation === 'top'}
                 aria-controls="services-mega-menu"
@@ -390,9 +416,10 @@ const Navbar = () => {
             megaMenuRef={megaMenuRef}
             pointerLeft={pointerLeft}
             activeServiceIndex={activeServiceIndex}
-            setActiveServiceIndex={setActiveServiceIndex}
+            setActiveServiceIndex={setHoveredServiceIndex}
             activeService={activeService}
             handleServiceClick={handleServiceClick}
+            currentPathname={location.pathname}
           />
         )}
       </header>
@@ -406,7 +433,7 @@ const Navbar = () => {
               <button
                 ref={bottomServicesBtnRef}
                 type="button"
-                className={`capsule-services-btn ${megaMenuLocation === 'bottom' ? 'active' : ''}`}
+                className={`capsule-services-btn ${isServicesPage || megaMenuLocation === 'bottom' ? 'active' : ''}`}
                 onClick={toggleBottomMegaMenu}
                 aria-expanded={megaMenuLocation === 'bottom'}
                 aria-controls="services-mega-menu"
@@ -446,9 +473,10 @@ const Navbar = () => {
               megaMenuRef={megaMenuRef}
               pointerLeft={pointerLeft}
               activeServiceIndex={activeServiceIndex}
-              setActiveServiceIndex={setActiveServiceIndex}
+              setActiveServiceIndex={setHoveredServiceIndex}
               activeService={activeService}
               handleServiceClick={handleServiceClick}
+              currentPathname={location.pathname}
             />
           )}
         </aside>
@@ -476,31 +504,34 @@ const Navbar = () => {
             <li>
               <button
                 type="button"
-                className={`mobile-nav-item mobile-nav-services-btn ${mobileServicesOpen ? 'active' : ''}`}
+                className={`mobile-nav-item mobile-nav-services-btn ${isServicesPage || isMobileServicesExpanded ? 'active' : ''}`}
                 onClick={() => setMobileServicesOpen(prev => !prev)}
-                aria-expanded={mobileServicesOpen}
+                aria-expanded={isMobileServicesExpanded}
               >
                 <span className="mobile-nav-text"><span className='letter-highlight'>S</span>ERVICES</span>
                 <span className="mobile-nav-icon-wrapper">
-                  <FaChevronDown className={`mobile-services-chevron ${mobileServicesOpen ? 'open' : ''}`} />
+                  <FaChevronDown className={`mobile-services-chevron ${isMobileServicesExpanded ? 'open' : ''}`} />
                 </span>
               </button>
 
               {/* Mobile Services Accordion Dropdown */}
-              <div className={`mobile-services-dropdown ${mobileServicesOpen ? 'open' : ''}`}>
+              <div className={`mobile-services-dropdown ${isMobileServicesExpanded ? 'open' : ''}`}>
                 <ul className="mobile-services-sublist">
-                  {SERVICES_DATA.map((service) => (
-                    <li key={service.id}>
-                      <a
-                        href={service.link}
-                        className="mobile-service-sublink"
-                        onClick={handleServiceClick}
-                      >
-                        <span className="mobile-sublink-title">{service.title}</span>
-                        <FaArrowRight className="mobile-sublink-arrow" aria-hidden="true" />
-                      </a>
-                    </li>
-                  ))}
+                  {SERVICES_DATA.map((service) => {
+                    const isCurrent = isServiceActive(service, location.pathname);
+                    return (
+                      <li key={service.id}>
+                        <Link
+                          to={service.link}
+                          className={`mobile-service-sublink ${isCurrent ? 'active' : ''}`}
+                          onClick={handleServiceClick}
+                        >
+                          <span className="mobile-sublink-title">{service.title}</span>
+                          <FaArrowRight className="mobile-sublink-arrow" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </li>

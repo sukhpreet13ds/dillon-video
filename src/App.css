@@ -13,6 +13,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    width: 3.5px;
+}         
+::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+::-webkit-scrollbar-thumb {
+    background: #A30604;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #c90300;
+}
 
 @media (max-width: 1800px) {
   .navbar-container {
@@ -45,6 +58,11 @@
 
   .footer-container {
     max-width: 1740px;
+  }
+
+  .services-showcase-container {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -449,6 +467,66 @@
   .footer-logo-img {
     font-size: 77px;
   }
+
+  /* Branding / Service Pages Responsiveness */
+  .service-container {
+    padding: 0 2rem;
+  }
+
+  .service-hero-title {
+    font-size: 3.8rem;
+  }
+
+  .service-section-heading-dark,
+  .service-section-heading-light {
+    font-size: 2.8rem;
+  }
+
+  .service-why-main-grid {
+    gap: 2.5rem;
+  }
+
+  .service-stories-grid {
+    gap: 3.5rem;
+  }
+
+  .service-process-grid {
+    gap: 1.75rem;
+  }
+
+  .service-why-features-row {
+    gap: 2rem;
+  }
+
+  .service-placement-grid,
+  .service-faq-grid {
+    gap: 3.5rem;
+  }
+
+  .service-explore-grid {
+    gap: 3rem;
+  }
+
+  .explore-heading {
+    font-size: 2.8rem;
+  }
+
+  .explore-service-item {
+    font-size: 1.8rem;
+  }
+
+  .service-showcase-box {
+    height: 380px;
+    min-height: 340px;
+  }
+
+  .service-box-title {
+    font-size: 1.6rem;
+  }
+
+  .service-box-content {
+    padding: 1.75rem 1.5rem;
+  }
 }
 
 /* 3. PORTRAIT TABLETS (Separate) */
@@ -740,6 +818,149 @@
   .footer-legal-links a {
     font-size: 17px;
   }
+
+  /* Branding / Service Pages Responsiveness */
+  .service-container {
+    padding: 0 1.5rem;
+  }
+
+  .service-hero-section {
+    padding: 2.5rem 0 4rem 0;
+  }
+
+  .service-hero-header-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .service-hero-intro-col {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .service-hero-title {
+    font-size: 3.2rem;
+  }
+
+  .service-hero-video-box {
+    aspect-ratio: 16 / 9;
+  }
+
+  .service-play-btn {
+    width: 58px;
+    height: 58px;
+  }
+
+  .service-why-section {
+    padding: 4.5rem 0;
+  }
+
+  .service-why-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .service-section-heading-dark,
+  .service-section-heading-light {
+    font-size: 2.5rem;
+  }
+
+  .service-why-features-row {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+    padding-top: 2.5rem;
+  }
+
+  .service-stories-section {
+    padding: 4.5rem 0;
+  }
+
+  .service-stories-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-top: 1rem;
+  }
+
+  .stories-video-box {
+    aspect-ratio: 16 / 9;
+  }
+
+  .service-process-section {
+    padding: 4.5rem 0 5.5rem 0;
+  }
+
+  .service-process-main-heading {
+    margin-bottom: 3rem;
+  }
+
+  .service-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem 2rem;
+  }
+
+  .service-placement-section {
+    padding: 4.5rem 0;
+  }
+
+  .service-placement-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .service-faq-section {
+    padding: 4.5rem 0 5rem 0;
+  }
+
+  .service-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .service-explore-section {
+    padding: 4rem 0;
+  }
+
+  .service-explore-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .explore-heading {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .explore-service-item {
+    font-size: 1.8rem;
+  }
+
+  .service-showcase-box {
+    height: 340px;
+    min-height: 300px;
+  }
+
+  .service-box-title {
+    font-size: 1.4rem;
+  }
+
+  .service-box-desc {
+    font-size: 12.5px;
+  }
+
+  .service-box-content {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .booking-modal-container {
+    padding: 2.25rem 2rem 2rem;
+    max-width: 560px;
+  }
+
+  .booking-modal-title {
+    font-size: 1.85rem;
+  }
 }
 
 /*  4. MOBILE (Separate) */
@@ -821,11 +1042,11 @@
   }
 
   .hero-heading .line-powerful {
-    font-size: 85px;
+    font-size: 75px;
   }
 
   .hero-heading .line-visuals {
-    font-size: 74px;
+    font-size: 54px;
     margin-left: 7.5rem;
     margin-top: .2rem;
   }
@@ -1182,5 +1403,354 @@
 
   .testimonial-cards-wrapper::before {
     display: none;
+  }
+
+  /* Branding / Service Pages Responsiveness */
+  .service-container {
+    padding: 0 1.25rem;
+  }
+
+  .service-hero-section {
+    padding: 2rem 0 3.5rem 0;
+  }
+
+  .service-breadcrumb {
+    font-size: 10px;
+    gap: 0.45rem;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  .service-hero-header-row {
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .service-hero-title {
+    font-size: 2.4rem;
+  }
+
+  .service-hero-subtitle {
+    font-size: 2.2rem;
+    margin-top: 0.15rem;
+  }
+
+  .service-hero-cta-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .service-hero-intro-col {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .service-hero-intro-text {
+    font-size: 14.5px;
+  }
+
+  .service-hero-video-box {
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+  }
+
+  .service-play-btn {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-play-icon {
+    font-size: 14px;
+  }
+
+  .service-video-metadata-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    margin-top: 0.85rem;
+  }
+
+  .service-section-tag {
+    font-size: 11px;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-section-heading-dark,
+  .service-section-heading-light {
+    font-size: 2.1rem;
+    line-height: 1.2;
+  }
+
+  .service-why-section {
+    padding: 3.5rem 0;
+  }
+
+  .service-why-main-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .service-lead-text,
+  .service-sub-text {
+    font-size: 15.5px;
+    line-height: 1.6;
+  }
+
+  .service-why-features-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .service-feature-title {
+    font-size: 1.45rem;
+  }
+
+  .service-feature-desc {
+    font-size: 14px;
+  }
+
+  .service-stories-section {
+    padding: 3.5rem 0;
+  }
+
+  .service-stories-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+
+  .service-stories-left-col .service-section-heading-light {
+    margin-bottom: 1.75rem;
+  }
+
+  .stories-video-box {
+    aspect-ratio: 16 / 9;
+    border-radius: 6px;
+  }
+
+  .stories-video-caption {
+    font-size: 10px;
+  }
+
+  .story-item {
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .story-title {
+    font-size: 1.45rem;
+  }
+
+  .story-desc {
+    font-size: 14px;
+  }
+
+  .service-process-section {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .service-process-main-heading {
+    margin-bottom: 2.25rem;
+  }
+
+  .service-process-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .process-title {
+    font-size: 1.45rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .process-desc {
+    font-size: 14px;
+  }
+
+  .service-placement-section {
+    padding: 3.5rem 0;
+  }
+
+  .service-placement-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .placement-item {
+    padding: 1.5rem 0;
+  }
+
+  .placement-title {
+    font-size: 1.45rem;
+  }
+
+  .placement-desc {
+    font-size: 14px;
+  }
+
+  .service-placement-desc {
+    margin-top: 1.25rem;
+    font-size: 14.5px;
+  }
+
+  .service-faq-section {
+    padding: 3.5rem 0 4.5rem 0;
+  }
+
+  .service-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem 0;
+  }
+
+  .faq-question {
+    font-size: 1.4rem;
+  }
+
+  .faq-answer {
+    font-size: 14px;
+  }
+
+  .service-explore-section {
+    padding: 3.5rem 0;
+  }
+
+  .service-explore-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .explore-heading {
+    font-size: 2.1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .explore-service-item {
+    font-size: 1.55rem;
+    gap: 0.65rem;
+  }
+
+  .explore-service-arrow {
+    font-size: 1.4rem;
+  }
+
+  .explore-all-link {
+    font-size: 13.5px;
+  }
+
+  /* Home Services Showcase: 2x2 in mobile */
+  .services-showcase-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .service-showcase-box {
+    height: 290px;
+    min-height: 260px;
+  }
+
+  .service-showcase-box:nth-child(3n) {
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .service-showcase-box:nth-child(2n) {
+    border-right: none;
+  }
+
+  .service-showcase-box:last-child:nth-child(odd) {
+    grid-column: span 2;
+    border-right: none;
+  }
+
+  .service-box-num {
+    top: 1.25rem;
+    left: 1.25rem;
+    font-size: 12.5px;
+  }
+
+  .service-box-icon-corner {
+    top: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .service-box-content {
+    padding: 1.25rem 10px;
+  }
+
+  .service-box-title {
+    font-size: 16px;
+    margin-bottom: 0.35rem;
+  }
+
+  .service-box-desc {
+    font-size: 10px;
+  }
+
+  .service-box-icon-play {
+    font-size: 13px;
+  }
+
+  /* Booking Modal Mobile */
+  .booking-modal-overlay {
+    padding: 1rem 0.75rem;
+    align-items: flex-start;
+  }
+
+  .booking-modal-container {
+    padding: 2rem 1.25rem 1.5rem;
+    border-radius: 14px;
+    margin: 1.5rem auto;
+  }
+
+  .booking-modal-close-btn {
+    top: 0.85rem;
+    right: 0.85rem;
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+  }
+
+  .booking-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .booking-modal-subtitle {
+    font-size: 13.5px;
+    margin-bottom: 1.25rem;
+  }
+
+  .booking-form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .booking-form-input,
+  .booking-form-select,
+  .booking-form-textarea {
+    font-size: 14px;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .booking-modal-submit-btn {
+    font-size: 15px;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .booking-success-title {
+    font-size: 1.65rem;
+  }
+
+  .booking-success-desc {
+    font-size: 14px;
   }
 }
