@@ -90,7 +90,7 @@ const BookingModalForm = ({ preselectedService, onClose }) => {
             <label htmlFor="booking-name" className="booking-form-label">
               Name <span className="required-star">*</span>
             </label>
-            <input
+            <input 
               type="text"
               id="booking-name"
               name="name"

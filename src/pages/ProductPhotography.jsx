@@ -6,7 +6,6 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import heroThumb from '../assets/product-thumbnail.webp';
-import useBookingModal from '../context/useBookingModal';
 import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
 
@@ -15,7 +14,6 @@ const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1960090788-d3dc6ba115a
 
 const ProductPhotography = () => {
   useScrollAnimation();
-  const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
   const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
@@ -41,14 +39,9 @@ const ProductPhotography = () => {
                 Product Photography
                 <span className="service-hero-subtitle">Crisp detail. Studio precision.</span>
               </h1>
-              <button
-                type="button"
-                className="service-hero-cta-btn"
-                onClick={() => openBookingModal('Product Photography')}
-                data-service="Product Photography"
-              >
+              <Link to="/inquiry" className="service-hero-cta-btn">
                 Plan your product shoot
-              </button>
+              </Link>
             </div>
 
             <div className="service-hero-intro-col">

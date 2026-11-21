@@ -204,7 +204,7 @@ const Navbar = () => {
     : (currentServiceIndex !== -1 ? currentServiceIndex : 0);
   const [pointerLeft, setPointerLeft] = useState(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const isMobileServicesExpanded = mobileServicesOpen || isServicesPage;
+  const isMobileServicesExpanded = mobileServicesOpen;
   const [isScrolled, setIsScrolled] = useState(false);
 
   const topServicesBtnRef = useRef(null);
@@ -375,13 +375,13 @@ const Navbar = () => {
               </button>
             </li>
             <li>
-              <a href="#work" className="navbar-link" onClick={closeMegaMenu}>OUR WORK</a>
+              <Link to="/our-work" className={`navbar-link ${location.pathname === '/our-work' || location.pathname === '/work' ? 'active' : ''}`} onClick={closeMegaMenu}>OUR WORK</Link>
             </li>
             <li>
-              <a href="#about" className="navbar-link" onClick={closeMegaMenu}>ABOUT</a>
+              <Link to="/about" className={`navbar-link ${location.pathname === '/about' || location.pathname === '/about-us' ? 'active' : ''}`} onClick={closeMegaMenu}>ABOUT</Link>
             </li>
             <li>
-              <a href="#contact" className="navbar-link" onClick={closeMegaMenu}>CONTACT</a>
+              <Link to="/contact" className={`navbar-link ${location.pathname === '/contact' || location.pathname === '/contact-us' ? 'active' : ''}`} onClick={closeMegaMenu}>CONTACT</Link>
             </li>
           </ul>
 
@@ -391,10 +391,10 @@ const Navbar = () => {
               <FaPhoneAlt className="nav-phone-icon" aria-hidden="true" />
               <span>(352) 620-0686</span>
             </a>
-            <a href="#contact" className="nav-cta-btn" onClick={closeMegaMenu}>
+            <Link to="/contact" className="nav-cta-btn" onClick={closeMegaMenu}>
               <span>Get in Touch</span>
               <FaArrowRight className="cta-arrow" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger Toggle (kept intact at top on mobile) */}
@@ -443,13 +443,13 @@ const Navbar = () => {
               </button>
             </li>
             <li>
-              <a href="#work" className="capsule-link" onClick={closeMegaMenu}>OUR WORK</a>
+              <Link to="/our-work" className={`capsule-link ${location.pathname === '/our-work' || location.pathname === '/work' ? 'active' : ''}`} onClick={closeMegaMenu}>OUR WORK</Link>
             </li>
             <li>
-              <a href="#about" className="capsule-link" onClick={closeMegaMenu}>ABOUT</a>
+              <Link to="/about" className={`capsule-link ${location.pathname === '/about' || location.pathname === '/about-us' ? 'active' : ''}`} onClick={closeMegaMenu}>ABOUT</Link>
             </li>
             <li>
-              <a href="#contact" className="capsule-link" onClick={closeMegaMenu}>CONTACT</a>
+              <Link to="/contact" className={`capsule-link ${location.pathname === '/contact' || location.pathname === '/contact-us' ? 'active' : ''}`} onClick={closeMegaMenu}>CONTACT</Link>
             </li>
           </ul>
 
@@ -461,10 +461,10 @@ const Navbar = () => {
               <FaPhoneAlt className="capsule-phone-icon" aria-hidden="true" />
               <span>(352) 620-0686</span>
             </a>
-            <a href="#contact" className="capsule-cta-btn" onClick={closeMegaMenu}>
+            <Link to="/contact" className="capsule-cta-btn" onClick={closeMegaMenu}>
               <span>Get in Touch</span>
               <FaArrowRight className="capsule-cta-arrow" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
 
           {/* Upward Mega Menu attached to the bottom capsule */}
@@ -504,7 +504,7 @@ const Navbar = () => {
             <li>
               <button
                 type="button"
-                className={`mobile-nav-item mobile-nav-services-btn ${isServicesPage || isMobileServicesExpanded ? 'active' : ''}`}
+                className="mobile-nav-item mobile-nav-services-btn"
                 onClick={() => setMobileServicesOpen(prev => !prev)}
                 aria-expanded={isMobileServicesExpanded}
               >
@@ -536,31 +536,31 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <a href="#work" className="mobile-nav-item" onClick={closeMobileMenu}>
+              <Link to="/our-work" className={`mobile-nav-item ${location.pathname === '/our-work' || location.pathname === '/work' ? 'active' : ''}`} onClick={closeMobileMenu}>
                 <span className="mobile-nav-text"><span className='letter-highlight'>O</span>UR <span className='letter-highlight'>W</span>ORK</span>
                 <span className="mobile-nav-icon-wrapper">
                   <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
                   <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#about" className="mobile-nav-item" onClick={closeMobileMenu}>
+              <Link to="/about" className={`mobile-nav-item ${location.pathname === '/about' || location.pathname === '/about-us' ? 'active' : ''}`} onClick={closeMobileMenu}>
                 <span className="mobile-nav-text"><span className='letter-highlight'>A</span>BOUT</span>
                 <span className="mobile-nav-icon-wrapper">
                   <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
                   <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
                 </span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contact" className="mobile-nav-item" onClick={closeMobileMenu}>
+              <Link to="/contact" className={`mobile-nav-item ${location.pathname === '/contact' || location.pathname === '/contact-us' ? 'active' : ''}`} onClick={closeMobileMenu}>
                 <span className="mobile-nav-text"><span className='letter-highlight'>C</span>ONTACT</span>
                 <span className="mobile-nav-icon-wrapper">
                   <FaPlay className={`nav-icon-play ${showArrow ? 'hide' : 'show'}`} />
                   <FaArrowRight className={`nav-icon-arrow ${showArrow ? 'show' : 'hide'}`} />
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -569,10 +569,10 @@ const Navbar = () => {
               <FaPhoneAlt className="nav-phone-icon" aria-hidden="true" />
               <span>(352) 620-0686</span>
             </a>
-            <a href="#contact" className="mobile-nav-cta-btn" onClick={closeMobileMenu}>
+            <Link to="/contact" className="mobile-nav-cta-btn" onClick={closeMobileMenu}>
               <span>Get in Touch</span>
               <FaArrowRight className="cta-arrow" aria-hidden="true" />
-            </a>
+            </Link>
           </div>
 
           {/* Video right after the buttons - rendered only when menu is open */}

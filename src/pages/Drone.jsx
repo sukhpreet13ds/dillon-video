@@ -6,7 +6,6 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import heroThumb from '../assets/drone-thumbnail.webp';
-import useBookingModal from '../context/useBookingModal';
 import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
 
@@ -15,7 +14,6 @@ const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1391376021-9c4fe10bb9b
 
 const Drone = () => {
   useScrollAnimation();
-  const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
   const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
@@ -41,14 +39,9 @@ const Drone = () => {
                 Drone &amp; Aerial
                 <span className="service-hero-subtitle">Cinematic vantage. From above.</span>
               </h1>
-              <button
-                type="button"
-                className="service-hero-cta-btn"
-                onClick={() => openBookingModal('Drone & Aerial')}
-                data-service="Drone & Aerial"
-              >
+              <Link to="/inquiry" className="service-hero-cta-btn">
                 Plan your aerial shoot
-              </button>
+              </Link>
             </div>
 
             <div className="service-hero-intro-col">

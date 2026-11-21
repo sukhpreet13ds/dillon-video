@@ -527,6 +527,92 @@
   .service-box-content {
     padding: 1.75rem 1.5rem;
   }
+
+  /* Our Work - Large Tablet / Small Desktop */
+  .ourwork-hero-title {
+    font-size: 4.6rem;
+  }
+
+  .ourwork-spotlight-title {
+    font-size: 2.85rem;
+  }
+
+  .ourwork-selected-heading {
+    font-size: 3.25rem;
+  }
+
+  .ourwork-card-title {
+    font-size: 1.95rem;
+  }
+
+  /* About - Large Tablet / Small Desktop */
+  .about-hero-title {
+    font-size: 4.4rem;
+  }
+
+  .about-story-year {
+    font-size: 7rem;
+  }
+
+  .about-story-heading,
+  .about-jeff-heading,
+  .about-horizon-heading {
+    font-size: 3rem;
+  }
+
+  .about-values-heading {
+    font-size: 3.25rem;
+  }
+
+  /* Inquiry - Large Tablet / Small Desktop */
+  .inquiry-hero-title {
+    font-size: 4.4rem;
+  }
+
+  .inquiry-main-grid {
+    gap: 3.5rem;
+  }
+
+  .inquiry-form-column {
+    padding: 2.75rem;
+  }
+
+  .inquiry-next-heading {
+    font-size: 2.85rem;
+  }
+
+  /* Careers - Large Tablet / Small Desktop */
+  .careers-hero-title {
+    font-size: 4.4rem;
+  }
+
+  .careers-work-heading,
+  .careers-craft-heading,
+  .careers-steps-heading {
+    font-size: 3.15rem;
+  }
+
+  .careers-form-left-heading,
+  .careers-faq-heading {
+    font-size: 3.5rem;
+  }
+
+  /* Contact - Large Tablet / Small Desktop */
+  .contact-hero-title {
+    font-size: 4.5rem;
+  }
+
+  .contact-main-grid {
+    gap: 3.5rem;
+  }
+
+  .contact-form-card {
+    padding: 2.75rem;
+  }
+
+  .contact-next-heading {
+    font-size: 2.85rem;
+  }
 }
 
 /* 3. PORTRAIT TABLETS (Separate) */
@@ -960,6 +1046,268 @@
 
   .booking-modal-title {
     font-size: 1.85rem;
+  }
+
+  /* Our Work - Tablet */
+  .ourwork-container {
+    padding: 0 2rem;
+  }
+
+  .ourwork-hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .ourwork-hero-title {
+    font-size: 3.8rem;
+  }
+
+  .ourwork-spotlight-title {
+    font-size: 2.6rem;
+  }
+
+  .ourwork-spotlight-info-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .ourwork-selected-heading {
+    font-size: 3rem;
+  }
+
+  .ourwork-grid {
+    gap: 2.5rem 1.75rem;
+  }
+
+  .ourwork-clients-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ourwork-clients-heading {
+    font-size: 2.85rem;
+  }
+
+  .ourwork-clients-row {
+    gap: 1rem;
+  }
+
+  .ourwork-client-name {
+    font-size: 14.5px;
+  }
+
+  /* About - Tablet */
+  .about-container {
+    padding: 0 2rem;
+  }
+
+  .about-hero-row {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-hero-title {
+    font-size: 3.8rem;
+  }
+
+  .about-hero-intro {
+    font-size: 17px;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .about-story-year {
+    font-size: 6.5rem;
+  }
+
+  .about-story-heading,
+  .about-jeff-heading,
+  .about-horizon-heading {
+    font-size: 2.85rem;
+  }
+
+  .about-jeff-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-jeff-img-box {
+    max-width: 380px;
+  }
+
+  .about-jeff-quote-text {
+    font-size: 1.85rem;
+  }
+
+  .about-horizon-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .about-values-heading {
+    font-size: 3rem;
+  }
+
+  .about-values-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-recognition-title {
+    font-size: 2.5rem;
+  }
+
+  /* Inquiry - Tablet */
+  .inquiry-container {
+    padding: 0 2rem;
+  }
+
+  .inquiry-hero-row {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .inquiry-hero-title {
+    font-size: 3.8rem;
+  }
+
+  .inquiry-main-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .inquiry-form-column {
+    padding: 2.5rem;
+  }
+
+  .inquiry-next-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .inquiry-next-heading {
+    font-size: 2.85rem;
+  }
+
+  .inquiry-next-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .inquiry-logos-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  /* Careers - Tablet */
+  .careers-container {
+    padding: 0 2rem;
+  }
+
+  .careers-hero-row {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .careers-hero-title {
+    font-size: 3.8rem;
+  }
+
+  .careers-work-top-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .careers-work-heading,
+  .careers-craft-heading,
+  .careers-steps-heading {
+    font-size: 3rem;
+  }
+
+  .careers-principles-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .careers-craft-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .careers-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .careers-form-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .careers-form-left-heading,
+  .careers-faq-heading {
+    font-size: 3.25rem;
+  }
+
+  .careers-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  /* Contact - Tablet */
+  .contact-container {
+    padding: 0 2rem;
+  }
+
+  .contact-hero-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-hero-title {
+    font-size: 4rem;
+  }
+
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .contact-left-heading {
+    font-size: 2.85rem;
+  }
+
+  .contact-form-card {
+    padding: 2.5rem;
+  }
+
+  .contact-pills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-next-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-next-heading {
+    font-size: 2.85rem;
+  }
+
+  .contact-next-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-logos-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -1755,5 +2103,748 @@
   }
   .service-explore-right-col {
   font-size: 1rem;
+  }
+
+  /* Our Work - Mobile */
+  .ourwork-container {
+    padding: 0 1.25rem;
+  }
+
+  .ourwork-hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .ourwork-hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+
+  .ourwork-hero-title {
+    font-size: 2.85rem;
+  }
+
+  .ourwork-hero-location {
+    font-size: 11px;
+    margin-top: 1.25rem;
+  }
+
+  .ourwork-hero-intro {
+    font-size: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .ourwork-filter-bar {
+    padding: 1.25rem 0;
+  }
+
+  .ourwork-filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .ourwork-filter-pills {
+    gap: 0.5rem;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.35rem;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+     scrollbar-width: thin; 
+  }
+
+  .ourwork-filter-pill {
+    font-size: 13px;
+    padding: 0.45rem 0.95rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ourwork-spotlight-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .ourwork-section-meta-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .ourwork-spotlight-video-box {
+    aspect-ratio: 16 / 9;
+    margin-bottom: 1.25rem;
+  }
+
+  .ourwork-spotlight-info-row {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  .ourwork-spotlight-title {
+    font-size: 2.2rem;
+  }
+
+  .ourwork-spotlight-desc {
+    font-size: 15px;
+  }
+
+  .ourwork-view-film-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.55rem 1.15rem;
+    font-size: 12.5px;
+  }
+
+  .ourwork-selected-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .ourwork-selected-heading {
+    font-size: 2.35rem;
+    margin-bottom: 2rem;
+  }
+
+  .ourwork-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .ourwork-card-title {
+    font-size: 1.85rem;
+  }
+
+  .ourwork-card-desc {
+    font-size: 14px;
+  }
+
+  .ourwork-clients-section {
+    padding: 3.5rem 0 3.5rem;
+  }
+
+  .ourwork-clients-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 1.5rem 0 3rem;
+  }
+
+  .ourwork-clients-heading {
+    font-size: 2.5rem;
+  }
+
+  .ourwork-clients-desc {
+    font-size: 15px;
+  }
+
+  .ourwork-clients-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+    padding: 1.1rem 0;
+  }
+
+  .ourwork-client-name {
+    font-size: 14.5px;
+  }
+
+  .ourwork-clients-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .ourwork-footer-tags,
+  .ourwork-footer-since {
+    font-size: 11px;
+  }
+
+  /* About - Mobile */
+  .about-container {
+    padding: 0 1.25rem;
+  }
+
+  .about-hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .about-breadcrumb {
+    margin-bottom: 2.25rem;
+  }
+
+  .about-hero-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+.about-container-page {
+padding: 0 1rem;
+}
+  .about-hero-title {
+    font-size: 2.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-hero-intro {
+    font-size: 15px;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-hero-cta-btn {
+    font-size: 13.5px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .about-story-section {
+    padding: 3.5rem 0 3.5rem;
+  }
+
+  .about-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-story-year {
+    font-size: 5rem;
+  }
+
+  .about-story-year-sub {
+    font-size: 11px;
+    margin-top: 0.75rem;
+  }
+
+  .about-story-heading {
+    font-size: 2.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-story-text {
+    font-size: 15px;
+  }
+
+  .about-story-footer-row {
+    gap: 0.65rem;
+  }
+
+  .about-story-footer-item,
+  .about-story-footer-sep {
+    font-size: 11px;
+  }
+
+  .about-jeff-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .about-jeff-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-jeff-heading {
+    font-size: 2.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-jeff-bio {
+    font-size: 15px;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-jeff-quote-text {
+    font-size: 1.55rem;
+  }
+
+  .about-horizon-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .about-horizon-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-horizon-heading {
+    font-size: 2.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-horizon-desc {
+    font-size: 15px;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-destinations-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .about-destination-item {
+    font-size: 1.15rem;
+  }
+
+  .about-values-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .about-values-heading {
+    font-size: 2.35rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .about-values-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .about-value-title {
+    font-size: 1.5rem;
+  }
+
+  .about-value-desc {
+    font-size: 14px;
+  }
+
+  .about-recognition-section {
+    padding: 3.5rem 0;
+  }
+
+  .about-recognition-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+  }
+
+  .about-recognition-title {
+    font-size: 2.15rem;
+  }
+
+  .about-recognition-subtitle {
+    font-size: 14.5px;
+  }
+
+  .about-explore-work-btn {
+    font-size: 13px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Inquiry - Mobile */
+  .inquiry-container {
+    padding: 0 1.25rem;
+  }
+
+  .inquiry-hero-section {
+    padding: 8.5rem 0 3.5rem;
+  }
+
+  .inquiry-breadcrumb {
+    margin-bottom: 2.25rem;
+  }
+
+  .inquiry-hero-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .inquiry-hero-title {
+    font-size: 2.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .inquiry-hero-intro {
+    font-size: 15px;
+  }
+
+  .inquiry-form-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .inquiry-main-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .inquiry-side-heading {
+    font-size: 2.25rem;
+  }
+
+  .inquiry-side-phone {
+    font-size: 1.75rem;
+  }
+
+  .inquiry-form-column {
+    padding: 1.75rem 1.25rem;
+    border-radius: 4px;
+  }
+
+  .inquiry-form-title {
+    font-size: 2.15rem;
+  }
+
+  .inquiry-form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .inquiry-checkboxes-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .inquiry-submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .inquiry-submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .inquiry-next-section {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .inquiry-next-top {
+    margin-bottom: 3rem;
+  }
+
+  .inquiry-next-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .inquiry-next-heading {
+    font-size: 2.35rem;
+  }
+
+  .inquiry-next-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .inquiry-logos-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .inquiry-logo-img {
+    max-height: 42px;
+  }
+
+  /* Careers - Mobile */
+  .careers-container {
+    padding: 0 1.25rem;
+  }
+
+  .careers-hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .careers-breadcrumb {
+    margin-bottom: 2.25rem;
+  }
+
+  .careers-hero-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .careers-hero-title {
+    font-size: 2.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .careers-hero-intro {
+    font-size: 15px;
+    margin-bottom: 1.75rem;
+  }
+
+  .careers-hero-cta-btn {
+    font-size: 13.5px;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .careers-hero-meta-row {
+    padding-top: 2.5rem;
+  }
+.ourwork-filter-pill.active{
+  box-shadow: none;
+}
+  .careers-hero-meta-tag {
+    font-size: 11px;
+  }
+
+  .careers-work-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .careers-work-top-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .careers-work-heading {
+    font-size: 2.45rem;
+  }
+
+  .careers-work-lead,
+  .careers-work-desc {
+    font-size: 15px;
+  }
+
+  .careers-principles-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .careers-principle-title {
+    font-size: 1.65rem;
+  }
+
+  .careers-principle-desc {
+    font-size: 14.5px;
+  }
+
+  .careers-craft-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .careers-craft-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .careers-craft-heading {
+    font-size: 2.45rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .careers-craft-item {
+    grid-template-columns: 36px 1fr;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .careers-craft-title {
+    font-size: 1.65rem;
+  }
+
+  .careers-craft-desc {
+    font-size: 14.5px;
+  }
+
+  .careers-craft-footer-tag {
+    font-size: 11px;
+    padding-top: 1.5rem;
+  }
+
+  .careers-steps-section {
+    padding: 3.5rem 0 4rem;
+  }
+
+  .careers-steps-heading {
+    font-size: 2.45rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .careers-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  .careers-step-title {
+    font-size: 1.65rem;
+  }
+
+  .careers-step-desc {
+    font-size: 14.5px;
+  }
+
+  .careers-form-section {
+    padding: 4rem 0 4.5rem;
+  }
+
+  .careers-form-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .careers-form-left-heading {
+    font-size: 2.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .careers-form-left-intro {
+    font-size: 15px;
+    margin-bottom: 2rem;
+  }
+
+  .careers-form-left-subblock {
+    margin-bottom: 2.5rem;
+  }
+
+  .careers-form-left-subtitle {
+    font-size: 1.35rem;
+  }
+
+  .careers-form-left-subtext,
+  .careers-form-left-permission {
+    font-size: 13.5px;
+  }
+
+  .careers-form-card {
+    padding: 2rem 1.35rem;
+  }
+
+  .careers-card-title {
+    font-size: 2.15rem;
+  }
+
+  .careers-form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .careers-faq-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .careers-faq-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .careers-faq-heading {
+    font-size: 2.85rem;
+  }
+
+  .careers-faq-item {
+    padding: 1.75rem 0;
+  }
+
+  .careers-faq-question {
+    font-size: 1.45rem;
+  }
+
+  .careers-faq-answer {
+    font-size: 14.5px;
+  }
+
+  /* Contact - Mobile */
+  .contact-container {
+    padding: 0 1.25rem;
+  }
+
+  .contact-hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .contact-breadcrumb {
+    margin-bottom: 2.25rem;
+  }
+
+  .contact-hero-row {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .contact-hero-title {
+    font-size: 2.85rem;
+  }
+
+  .contact-main-section {
+    padding: 3.5rem 0 4.5rem;
+  }
+
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .contact-left-heading {
+    font-size: 2.35rem;
+  }
+
+  .contact-phone-number {
+    font-size: 1.75rem;
+  }
+
+  .contact-img-caption {
+    margin-bottom: 2rem;
+  }
+
+  .contact-form-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 4px;
+  }
+
+  .contact-form-title {
+    font-size: 2.15rem;
+  }
+
+  .contact-form-row {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .contact-pills-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+
+.contact-service-pill {
+font-size: 9px;
+}
+  .contact-submit-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-submit-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 0.85rem 1.5rem;
+  }
+
+  .contact-next-section {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .contact-next-top {
+    margin-bottom: 3rem;
+  }
+
+  .contact-next-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .contact-next-heading {
+    font-size: 2.35rem;
+  }
+
+  .contact-next-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-logos-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.5rem;
+    padding-top: 2.5rem;
+  }
+
+  .contact-logo-img {
+    max-height: 42px;
   }
 }

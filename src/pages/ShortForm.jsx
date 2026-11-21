@@ -6,7 +6,6 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import heroThumb from '../assets/short-thumbnail.webp';
-import useBookingModal from '../context/useBookingModal';
 import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
 
@@ -15,7 +14,6 @@ const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1467443691-d08e7346d93
 
 const ShortForm = () => {
   useScrollAnimation();
-  const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
   const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
@@ -41,14 +39,9 @@ const ShortForm = () => {
                 Short-Form Content
                 <span className="service-hero-subtitle">High energy. Maximum reach.</span>
               </h1>
-              <button
-                type="button"
-                className="service-hero-cta-btn"
-                onClick={() => openBookingModal('Short-Form Content')}
-                data-service="Short-Form Content"
-              >
+              <Link to="/inquiry" className="service-hero-cta-btn">
                 Plan your short-form series
-              </button>
+              </Link>
             </div>
 
             <div className="service-hero-intro-col">
@@ -198,7 +191,7 @@ const ShortForm = () => {
                       loading="lazy"
                     />
                     <button
-                      type="button"
+                      type="button"                                                                                       
                       className="service-play-btn service-play-btn-small"
                       aria-label="Play video"
                       onClick={(e) => {
@@ -219,7 +212,7 @@ const ShortForm = () => {
                     allowFullScreen
                   />
                 )}
-              </div>
+              </div>      
 
               <span className="stories-video-caption">DYNAMIC MOTION. RETENTION-FOCUSED.</span>
             </div>

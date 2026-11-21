@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import footerLogo from '../assets/logo-footer.png';
 import {
   FaLinkedinIn,
@@ -42,18 +43,18 @@ const Footer = () => {
           {/* Column 2: Specialized Production Services */}
           <div className="footer-col-links animate-on-scroll" data-animation="animate__fadeInUp">
             <h4 className="footer-col-title">
-              Specialized production services <span className="title-arrow">&#8599;</span>
+              Specialized production services
             </h4>
             <ul className="footer-link-list">
-              <li><a href="#services">Branding Videos</a></li>
-              <li><a href="#services">Drone & Aerial</a></li>
-              <li><a href="#services">Short-Form Content</a></li>
-              <li><a href="#services">Multi-Camera Production</a></li>
-              <li><a href="#services">Live Streaming</a></li>
-              <li><a href="#services">Staging, Lighting, Audio</a></li>
-              <li><a href="#services">Corporate Event Production</a></li>
-              <li><a href="#services">Product Photography</a></li>
-              <li><a href="#services">Real Estate Photography</a></li>
+              <li><Link to="/branding">Branding Videos</Link></li>
+              <li><Link to="/drone">Drone & Aerial</Link></li>
+              <li><Link to="/short-form">Short-Form Content</Link></li>
+              <li><Link to="/multi-camera">Multi-Camera Production</Link></li>
+              <li><Link to="/live-streaming">Live Streaming</Link></li>
+              <li><Link to="/staging-lighting-audio">Staging, Lighting, Audio</Link></li>
+              <li><Link to="/corporate-events">Corporate Event Production</Link></li>
+              <li><Link to="/product-photography">Product Photography</Link></li>
+              <li><Link to="/real-estate">Real Estate Photography</Link></li>
             </ul>
           </div>
 
@@ -61,12 +62,11 @@ const Footer = () => {
           <div className="footer-col-links animate-on-scroll" data-animation="animate__fadeInUp">
             <h4 className="footer-col-title">Main</h4>
             <ul className="footer-link-list">
-              <li><a href="#work">Our work</a></li>
-              <li><a href="#about">Our people</a></li>
-              <li><a href="#about">About us</a></li>
-              <li><a href="#pricing">Pricing</a></li>
+              <li><Link to="/our-work">Our work</Link></li>
+              <li><Link to="/about">Our people</Link></li>
+              <li><Link to="/about">About us</Link></li>
               <li><a href="#testimonials">Reviews</a></li>
-              <li><a href="#careers">Careers</a></li>
+              <li><Link to="/careers">Careers</Link></li>
               <li><a href="#alternatives">Dillon Video vs. Alternatives</a></li>
             </ul>
           </div>
@@ -77,8 +77,6 @@ const Footer = () => {
             <ul className="footer-link-list">
               <li><a href="#blog">Blog</a></li>
               <li><a href="#events">Events & Summits</a></li>
-              <li><a href="#guides">Guides</a></li>
-              <li><a href="#reports">Reports</a></li>
               <li><a href="#stories">Customer Stories</a></li>
               <li><a href="#whats-new">What's new</a></li>
               <li><a href="#help">Help Center</a></li>

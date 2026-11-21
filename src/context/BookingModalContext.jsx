@@ -13,7 +13,10 @@ export const BookingModalProvider = ({ children }) => {
     } else {
       setPreselectedService('');
     }
-    setIsOpen(true);
+    setIsOpen(false);
+    if (typeof window !== 'undefined') {
+      window.location.href = '/inquiry';
+    }
   }, []);
 
   const closeBookingModal = useCallback(() => {

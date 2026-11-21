@@ -8,7 +8,7 @@ import ThreeCol from '../components/ThreeCol';
 import Testimonial from '../components/Testimonial';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-import thumbnail from "../assets/image.png";
+import thumbnail from "../assets/heroBg.webp";
 import howWorkBg from "../assets/how-work.jpg";
 import vserv1 from '../assets/vserv1.jpg';
 import vserv2 from '../assets/vserv2.jpg';
@@ -363,7 +363,7 @@ const Home = () => {
           <iframe
             ref={heroIframeRef}
             className="hero-video-iframe"
-            src="https://player.vimeo.com/video/662073747?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=1&playsinline=1&dnt=1&api=1"
+            src="https://player.vimeo.com/video/729024737?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&autopause=0&transparent=1&playsinline=1&dnt=1&api=1"
             title="Dillon Video Background"
             frameBorder="0"
             allow="autoplay; fullscreen; picture-in-picture; encrypted-media"

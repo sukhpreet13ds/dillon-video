@@ -1,5 +1,5 @@
 import React from 'react';
-import useBookingModal from '../context/useBookingModal';
+import { Link } from 'react-router-dom';
 import ctaBg from '../assets/cta-bg.png';
 import logo1 from '../assets/logo1.svg';
 import logo2 from '../assets/logo2.svg';
@@ -9,8 +9,6 @@ import logo5 from '../assets/logo5.svg';
 import logo6 from '../assets/logo6.png';
 
 const CTA = () => {
-  const { openBookingModal } = useBookingModal();
-
   const logos = [
     { src: logo1, alt: "OBS - Ocala Breeders' Sales" },
     { src: logo2, alt: "Phillips CJDR" },
@@ -38,15 +36,13 @@ const CTA = () => {
           <p className="cta-subtitle animate-on-scroll" data-animation="animate__fadeInUp">
             Let's Create Something People Remember.
           </p>
-          <button
-            type="button"
+          <Link
+            to="/inquiry"
             className="cta-btn animate-on-scroll"
             data-animation="animate__fadeInUp"
-            onClick={() => openBookingModal()}
-            data-open-modal="booking"
           >
             Book a demo
-          </button>
+          </Link>
         </div>
 
         {/* 6 Client Logos Over Background */}

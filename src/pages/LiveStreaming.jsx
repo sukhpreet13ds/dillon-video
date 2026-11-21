@@ -6,7 +6,6 @@ import useScrollAnimation from '../hooks/useScrollAnimation';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
 import heroThumb from '../assets/live-thumbnail.png';
-import useBookingModal from '../context/useBookingModal';
 import useVideoThumbnail from '../hooks/useVideoThumbnail';
 import '../style/services.css';
 
@@ -15,7 +14,6 @@ const STORIES_VIDEO_THUMB = "https://i.vimeocdn.com/video/1738030112-32376c8aa36
 
 const LiveStreaming = () => {
   useScrollAnimation();
-  const { openBookingModal } = useBookingModal();
   const [isHeroPlaying, setIsHeroPlaying] = useState(false);
   const [isStoriesPlaying, setIsStoriesPlaying] = useState(false);
   const storiesThumbnail = useVideoThumbnail(STORIES_VIDEO_URL, STORIES_VIDEO_THUMB);
@@ -41,14 +39,9 @@ const LiveStreaming = () => {
                 Live Streaming
                 <span className="service-hero-subtitle">Low latency. Global reach.</span>
               </h1>
-              <button
-                type="button"
-                className="service-hero-cta-btn"
-                onClick={() => openBookingModal('Live Streaming')}
-                data-service="Live Streaming"
-              >
+              <Link to="/inquiry" className="service-hero-cta-btn">
                 Plan your live stream
-              </button>
+              </Link>
             </div>
 
             <div className="service-hero-intro-col">
